@@ -1,0 +1,123 @@
+WARNING: This text document is for nerds only, read with caution
+
+1. MIDI Import
+    Input: MidiFile
+    Output: MidiTrack[]
+    Details:
+        A MIDI file chosen by the user is read using the DryWetMidi library.
+        The file is split into tracks.
+        The notes from each track are isolated and reinterpreted in absolute time (in microseconds). Note duration is discarded.
+    
+2. P2S (Program-to-Sound) Mapping
+    Input: MidiTrack[]
+    Output: MappedTrack[]
+    Details:
+        The user selects which TDW (Thirty Dollar Website) Sounds should correspond to each MIDI Program in each track.
+        The user may also selectively exclude MIDI tracks from the conversion process using the Mixing controls.
+        Each audible (as determined by the Mixing controls) track is augmented with user-defined Mapping information.
+
+3. TDW-IR (TDW Intermediate Representation) First Pass
+    Input: MappedTrack[]
+    Output: IntermediateChord[]
+    Details:
+        Notes from each track are converted to single-note chords based on Mapping information.
+        These Intermediate Chord tracks are then combined and sorted chronologically into a single array of chords.
+
+4. TDW-IR Second Pass
+    Input: IntermediateChord[]
+    Output: IntermediateChord[]
+    Details:
+        The array of single-note chords is condensed into an array of multi-note chords by merging simultaneous single-note chords.
+
+5. TDW-IR Third Pass
+    Input: IntermediateChord[]
+    Output: IntermediateChord[]
+    Details:
+        Delta time values are calculated for each TDWI Chord.
+
+6. TDW First Pass
+    Input: IntermediateChord[]
+    Output: TdwEvent[]
+    Details:
+        An array of TDW events is created from the input chords by generating pairs of TdwTempoActions and IntermediateSoundCollections.
+
+7. TDW Second Pass
+    Input: TdwEvent[]
+    Output: TdwEvent[]
+    Details:
+        Redundant Tempo Actions are removed from the array of TDW events.
+
+8. TDW Third Pass
+    Input: TdwEvent[]
+    Output: TdwEvent[]
+    Details:
+        Converts IntermediateSoundCollections to TdwVolumeActions, TdwSoundEvents, and TdwCombineActions.
+
+9. TDW Fourth Pass
+    Input: TdwEvent[]
+    Output: TdwEvent[]
+    Details:
+        Redundant Volume Actions are removed from the array of TDW events.
+
+10. Stringify
+    Input: TdwEvent[]
+    Output: string
+    Details:
+        Converts the array of TDW events to a string which can be written to a TDW file.
+
+Data Structures
+
+MidiFile // You guessed it, a MIDI file
+    (from DryWetMidi)
+    
+SevenBitNumber // Feared by the SixBitNumber for its crimes against the NineBitNumber
+    (from DryWetMidi)
+
+MidiSound // Stripped-down version of a Note (from DryWetMidi) which carries only the information required by the converter
+    SevenBitNumber programNumber // The MIDI program number (instrument)
+    SevenBitNumber noteNumber // The MIDI note number (pitch)
+    SevenBitNumber velocity // The MIDI velocity
+    SevenBitNumber channelVolume // The Channel Volume at the time of this note
+    long timeMicroseconds // Absolute Time of the Note in microseconds
+
+MidiTrack // A stripped-down representation of a MIDI track
+    string name // The name of this track
+    bool isPercussion // Whether or not this track is a percussion (channel 10) track
+    MidiSound[] sounds // The list of Notes in this track
+    SevenBitNumber[] programs // All MIDI programs (or notes in the case of channel 10) which appear in this track
+
+TdwSound // A Thirty Dollar Website sound
+    string name // The name of this sound (as it appears on thirtydollar.website)
+    string origin // The origin of this sound (as it appears on thirtydollar.website)
+    string symbol // The string representation of this sound (as used internally by the TDW file format)
+    bool hasPitch // Whether or not I could be bothered to check the pitch of this sound
+    bool midiPitch // My best guess of the MIDI pitch of this sound
+
+TdwProgramMap // Mapping information for a single MIDI program/percussion note
+    TdwSound sound // A TDW Sound selected by the user
+    bool useMidiTuning // Whether or not the user chose to tune this Sound based on MIDI pitch
+    float pitchOffset // The value to use as every TDW Sound's pitch parameter (in the case of no tuning) or to add to the MIDI pitch to derive the pitch parameter
+
+MappedTrack // A MidiTrack augmented with user-defined Mapping information
+    MidiTrack midiTrack // The MidiTrack being mapped
+    Dictionary<SevenBitNumber, TdwProgramMap> programMappings // A mapping of MIDI programs/percussion notes to TDW Sounds
+
+IntermediateSound // A TDW Sound analogue where the sound, pitch, and volume are all combined into one data structure
+    TdwSound tdwSound // The Thirty Dollar Website sound
+    float pitchParameter // The pitch parameter to use for this sound
+    float volume // The desired volume of this sound
+
+IntermediateChord // A collection of one or more IntermediateSounds which occur simultaneously
+    long absoluteTime // The absolute time of this chord
+    IntermediateSound[] sounds // The sounds in this chord
+    long deltaTime // The number of microseconds until the next chord
+
+TdwEvent // Abstract TDW event
+
+TdwIntermediateSoundCollection // TdwEvent consisting of a collection of IntermediateSounds
+
+TdwTempoAction // TDW Tempo Action
+
+TdwCombineAction // TDW Combine Action
+
+TdwSoundEvent // TDW Sound Action

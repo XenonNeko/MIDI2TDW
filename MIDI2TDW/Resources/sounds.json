@@ -1,0 +1,1346 @@
+{
+  "_pause": {
+    "id": 0,
+    "name": "Silence",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "boom": {
+    "id": 1,
+    "name": "Vine Boom",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "bruh": {
+    "id": 2,
+    "name": "Bruh Sound Effect #2",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "bong": {
+    "id": 3,
+    "name": "Bong",
+    "origin": "Taco Bell",
+    "midi": 64,
+    "icon": null
+  },
+  "💀": {
+    "id": 4,
+    "name": "Skeleton",
+    "origin": "Minecraft",
+    "midi": null,
+    "icon": "1f514"
+  },
+  "👏": {
+    "id": 5,
+    "name": "Reverb Clap",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": "1f44f"
+  },
+  "🐶": {
+    "id": 6,
+    "name": "what the dog doin",
+    "origin": "TonyBakerComedy",
+    "midi": null,
+    "icon": "1f436"
+  },
+  "👽": {
+    "id": 7,
+    "name": "Cave Noise",
+    "origin": "Minecraft",
+    "midi": null,
+    "icon": "1f480"
+  },
+  "🔔": {
+    "id": 8,
+    "name": "Bell",
+    "origin": null,
+    "midi": 88,
+    "icon": "1f514"
+  },
+  "💢": {
+    "id": 9,
+    "name": "Boink",
+    "origin": "Rhythm Heaven",
+    "midi": 52,
+    "icon": "1f4a2"
+  },
+  "💨": {
+    "id": 10,
+    "name": "Reverb Fart",
+    "origin": null,
+    "midi": null,
+    "icon": "1f4a8"
+  },
+  "🚫": {
+    "id": 11,
+    "name": "Error",
+    "origin": "Windows XP",
+    "midi": 60,
+    "icon": "1f6ab"
+  },
+  "💰": {
+    "id": 12,
+    "name": "Kaching",
+    "origin": null,
+    "midi": 72,
+    "icon": "1f4b0"
+  },
+  "🏏": {
+    "id": 13,
+    "name": "Bonk",
+    "origin": null,
+    "midi": null,
+    "icon": "1f3cf"
+  },
+  "🤬": {
+    "id": 14,
+    "name": "Bleep",
+    "origin": null,
+    "midi": 81,
+    "icon": "1f92c"
+  },
+  "🚨": {
+    "id": 15,
+    "name": "Alarm",
+    "origin": null,
+    "midi": 71,
+    "icon": "1f6a8"
+  },
+  "buzzer": {
+    "id": 16,
+    "name": "Incorrect Buzzer",
+    "origin": null,
+    "midi": 46,
+    "icon": null
+  },
+  "🅰": {
+    "id": 17,
+    "name": "aah",
+    "origin": "Zaytoven",
+    "midi": 72,
+    "icon": "1f170"
+  },
+  "e": {
+    "id": 18,
+    "name": "E",
+    "origin": "Unknown",
+    "midi": null,
+    "icon": null
+  },
+  "eight": {
+    "id": 19,
+    "name": 8,
+    "origin": "The Stanley Parable",
+    "midi": 59,
+    "icon": null
+  },
+  "🍕": {
+    "id": 20,
+    "name": "ayo the pizza here",
+    "origin": "CalebCity",
+    "midi": null,
+    "icon": "1f355"
+  },
+  "🐡": {
+    "id": 21,
+    "name": "Pufferfish Augh",
+    "origin": "Yummyboy",
+    "midi": 56,
+    "icon": "1f421"
+  },
+  "🦆": {
+    "id": 22,
+    "name": "Quack",
+    "origin": "Mac OS",
+    "midi": 65.5,
+    "icon": "1f986"
+  },
+  "🦢": {
+    "id": 23,
+    "name": "Honk",
+    "origin": "Untitled Goose Game",
+    "midi": 76,
+    "icon": "1f9a2"
+  },
+  "📲": {
+    "id": 24,
+    "name": "Skyline Notification",
+    "origin": "Samsung",
+    "midi": 59,
+    "icon": "1f4f2"
+  },
+  "🌄": {
+    "id": 25,
+    "name": "Morning Flower",
+    "origin": "Samsung",
+    "midi": 60,
+    "icon": "1f304"
+  },
+  "hitmarker": {
+    "id": 26,
+    "name": "Hitmarker",
+    "origin": "Call of Duty",
+    "midi": null,
+    "icon": null
+  },
+  "👌": {
+    "id": 27,
+    "name": "Noice Click",
+    "origin": "Michael Rosen",
+    "midi": null,
+    "icon": "1f44c"
+  },
+  "🖐": {
+    "id": 28,
+    "name": "Slap",
+    "origin": null,
+    "midi": null,
+    "icon": "1f590"
+  },
+  "🦀": {
+    "id": 29,
+    "name": "Mr. Krabs Walking",
+    "origin": "SpongeBob SquarePants",
+    "midi": null,
+    "icon": "1f980"
+  },
+  "🚬": {
+    "id": 30,
+    "name": "wowowowow",
+    "origin": "Kill Bill",
+    "midi": 69,
+    "icon": "1f6ac"
+  },
+  "whatsapp": {
+    "id": 31,
+    "name": "Whistle Notification",
+    "origin": "Samsung",
+    "midi": 59,
+    "icon": null
+  },
+  "😱": {
+    "id": 32,
+    "name": "Suspense",
+    "origin": null,
+    "midi": null,
+    "icon": "1f631"
+  },
+  "❗": {
+    "id": 33,
+    "name": "Alert",
+    "origin": "Metal Gear Solid",
+    "midi": 82,
+    "icon": 2757
+  },
+  "slip": {
+    "id": 34,
+    "name": "Slip",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "explosion": {
+    "id": 35,
+    "name": "Explosion",
+    "origin": "DELTARUNE",
+    "midi": null,
+    "icon": null
+  },
+  "🎉": {
+    "id": 36,
+    "name": "Tada",
+    "origin": "Windows 3.1",
+    "midi": 60,
+    "icon": "1f389"
+  },
+  "pan": {
+    "id": 37,
+    "name": "Frying Pan",
+    "origin": "Scott the Woz",
+    "midi": 57,
+    "icon": null
+  },
+  "💿": {
+    "id": 38,
+    "name": "Record Scratch",
+    "origin": null,
+    "midi": null,
+    "icon": "1f4bf"
+  },
+  "airhorn": {
+    "id": 39,
+    "name": "Airhorn",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "taiko_don": {
+    "id": 40,
+    "name": "Don",
+    "origin": "Taiko no Tatsujin",
+    "midi": null,
+    "icon": null
+  },
+  "taiko_ka": {
+    "id": 41,
+    "name": "Ka",
+    "origin": "Taiko no Tatsujin",
+    "midi": null,
+    "icon": null
+  },
+  "🎹": {
+    "id": 42,
+    "name": "Synth",
+    "origin": null,
+    "midi": 66,
+    "icon": "1f3b9"
+  },
+  "robtopphone": {
+    "id": 43,
+    "name": "Xylophone",
+    "origin": null,
+    "midi": 78,
+    "icon": null
+  },
+  "🎻": {
+    "id": 44,
+    "name": "Waterphone",
+    "origin": "Hell's Kitchen",
+    "midi": 79,
+    "icon": "1f3bb"
+  },
+  "🎸": {
+    "id": 45,
+    "name": "Slap Bass",
+    "origin": null,
+    "midi": 30,
+    "icon": "1f3b8"
+  },
+  "hoenn": {
+    "id": 46,
+    "name": "Hoenn Trumpet",
+    "origin": "Pokémon",
+    "midi": 66,
+    "icon": null
+  },
+  "🎺": {
+    "id": 47,
+    "name": "ZUNpet",
+    "origin": "Touhou",
+    "midi": 66,
+    "icon": "1f3ba"
+  },
+  "gun": {
+    "id": 48,
+    "name": "Gun Reload",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "dodgeball": {
+    "id": 49,
+    "name": "Dodgeball",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "whipcrack": {
+    "id": 50,
+    "name": "Whip Crack",
+    "origin": null,
+    "midi": null,
+    "icon": null
+  },
+  "gnome": {
+    "id": 51,
+    "name": "Gnome",
+    "origin": "You've Been Gnomed",
+    "midi": null,
+    "icon": null
+  },
+  "nope": {
+    "id": 52,
+    "name": "nope.avi",
+    "origin": "Team Fortress 2",
+    "midi": 54,
+    "icon": null
+  },
+  "mrbeast": {
+    "id": 53,
+    "name": "Dodgeball",
+    "origin": "Freshy Kanal",
+    "midi": 54,
+    "icon": null
+  },
+  "obama": {
+    "id": 54,
+    "name": "BARACK OBAMA",
+    "origin": "ERB",
+    "midi": 66,
+    "icon": null
+  },
+  "op": {
+    "id": 55,
+    "name": "op",
+    "origin": "Psy",
+    "midi": null,
+    "icon": null
+  },
+  "SLAM": {
+    "id": 56,
+    "name": "SLAM!",
+    "origin": "Space Jam",
+    "midi": null,
+    "icon": null
+  },
+  "stopposting": {
+    "id": 57,
+    "name": "Ding",
+    "origin": "biggayrapper",
+    "midi": 60,
+    "icon": null
+  },
+  "21": {
+    "id": 58,
+    "name": 21,
+    "origin": "DREHYPEMSU",
+    "midi": null,
+    "icon": null
+  },
+  "americano": {
+    "id": 59,
+    "name": "dog dancing we no speak americano",
+    "origin": "Unknown",
+    "midi": 69,
+    "icon": null
+  },
+  "oof": {
+    "id": 60,
+    "name": "Oof",
+    "origin": "Roblox",
+    "midi": null,
+    "icon": null
+  },
+  "subaluwa": {
+    "id": 61,
+    "name": "Subaluwa",
+    "origin": "Ed, Edd n Eddy",
+    "midi": 82,
+    "icon": null
+  },
+  "necoarc": {
+    "id": 62,
+    "name": "Neco-Arc",
+    "origin": "Carnival Phantasm",
+    "midi": null,
+    "icon": null
+  },
+  "samurai": {
+    "id": 63,
+    "name": "Samurai Techno",
+    "origin": "Rhythm Doctor",
+    "midi": 57,
+    "icon": null
+  },
+  "flipnote": {
+    "id": 64,
+    "name": "Frog",
+    "origin": "Flipnote Studio",
+    "midi": 68,
+    "icon": null
+  },
+  "familyguy": {
+    "id": 65,
+    "name": "Family Guy Intro",
+    "origin": "Family Guy",
+    "midi": 72,
+    "icon": null
+  },
+  "pingas": {
+    "id": 66,
+    "name": "PINGAS",
+    "origin": "AoStH",
+    "midi": 66,
+    "icon": null
+  },
+  "yoda": {
+    "id": 67,
+    "name": "Lego Yoda Death",
+    "origin": "LEGO Star Wars",
+    "midi": null,
+    "icon": null
+  },
+  "hehehehaw": {
+    "id": 68,
+    "name": "HE HE HE HAW",
+    "origin": "Clash Royale",
+    "midi": null,
+    "icon": null
+  },
+  "ultrainstinct": {
+    "id": 69,
+    "name": "Ultra Instinct",
+    "origin": "Dragon Ball Z",
+    "midi": 69,
+    "icon": null
+  },
+  "granddad": {
+    "id": 70,
+    "name": "GRAND DAD",
+    "origin": "Vargskelethor Joel",
+    "midi": null,
+    "icon": null
+  },
+  "morshu": {
+    "id": 71,
+    "name": "Mosrhu MMMMMMM",
+    "origin": "Link: The Faces of Evil",
+    "midi": 56,
+    "icon": null
+  },
+  "smw_coin": {
+    "id": 72,
+    "name": "Coin",
+    "origin": "Super Mario World",
+    "midi": null,
+    "icon": null
+  },
+  "smw_1up": {
+    "id": 73,
+    "name": "1-Up",
+    "origin": "Super Mario World",
+    "midi": null,
+    "icon": null
+  },
+  "smw_spinjump": {
+    "id": 74,
+    "name": "Spin Jump",
+    "origin": "Super Mario World",
+    "midi": null,
+    "icon": null
+  },
+  "smw_stomp2": {
+    "id": 75,
+    "name": "Stomp",
+    "origin": "Super Mario World",
+    "midi": null,
+    "icon": null
+  },
+  "smw_kick": {
+    "id": 76,
+    "name": "Kick",
+    "origin": "Super Mario World",
+    "midi": null,
+    "icon": null
+  },
+  "smw_stomp": {
+    "id": 77,
+    "name": "Boss Stomp",
+    "origin": "Super Mario World",
+    "midi": null,
+    "icon": null
+  },
+  "yahoo": {
+    "id": 78,
+    "name": "Long Jump",
+    "origin": "Super Mario 64",
+    "midi": null,
+    "icon": null
+  },
+  "sm64_hurt": {
+    "id": 79,
+    "name": "Damage",
+    "origin": "Super Mario 64",
+    "midi": null,
+    "icon": null
+  },
+  "bup": {
+    "id": 80,
+    "name": "Bup",
+    "origin": "Mario Kart 64",
+    "midi": 69,
+    "icon": null
+  },
+  "thwomp": {
+    "id": 81,
+    "name": "Thwomp",
+    "origin": "Super Mario 64",
+    "midi": null,
+    "icon": null
+  },
+  "sm64_painting": {
+    "id": 82,
+    "name": "Painting",
+    "origin": "Super Mario 64",
+    "midi": null,
+    "icon": null
+  },
+  "smm_scream": {
+    "id": 83,
+    "name": "Scream",
+    "origin": "Super Mario Maker",
+    "midi": null,
+    "icon": null
+  },
+  "mariopaint_mario": {
+    "id": 84,
+    "name": "Mario",
+    "origin": "Mario Paint",
+    "midi": 78,
+    "icon": null
+  },
+  "mariopaint_luigi": {
+    "id": 85,
+    "name": "Steel Drum",
+    "origin": "Super Mario World",
+    "midi": 66,
+    "icon": null
+  },
+  "smw_yoshi": {
+    "id": 86,
+    "name": "Yoshi",
+    "origin": "Mario Paint",
+    "midi": null,
+    "icon": null
+  },
+  "mariopaint_star": {
+    "id": 87,
+    "name": "Star",
+    "origin": "Mario Paint",
+    "midi": 90,
+    "icon": null
+  },
+  "mariopaint_flower": {
+    "id": 88,
+    "name": "Flower",
+    "origin": "Mario Paint",
+    "midi": 66,
+    "icon": null
+  },
+  "mariopaint_gameboy": {
+    "id": 89,
+    "name": "Gameboy",
+    "origin": "Mario Paint",
+    "midi": 66,
+    "icon": null
+  },
+  "mariopaint_dog": {
+    "id": 90,
+    "name": "Dog",
+    "origin": "Mario Paint",
+    "midi": 65,
+    "icon": null
+  },
+  "mariopaint_cat": {
+    "id": 91,
+    "name": "Cat",
+    "origin": "Mario Paint",
+    "midi": 65,
+    "icon": null
+  },
+  "mariopaint_swan": {
+    "id": 92,
+    "name": "Swan",
+    "origin": "Mario Paint",
+    "midi": 66,
+    "icon": null
+  },
+  "mariopaint_baby": {
+    "id": 93,
+    "name": "Baby",
+    "origin": "Mario Paint",
+    "midi": null,
+    "icon": null
+  },
+  "mariopaint_plane": {
+    "id": 94,
+    "name": "Plane",
+    "origin": "Mario Paint",
+    "midi": 65.8,
+    "icon": null
+  },
+  "mariopaint_car": {
+    "id": 95,
+    "name": "Car",
+    "origin": "Mario Paint",
+    "midi": 66,
+    "icon": null
+  },
+  "shaker": {
+    "id": 96,
+    "name": "Shaker",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "🥁": {
+    "id": 97,
+    "name": "Kick",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": "1f941"
+  },
+  "hammer": {
+    "id": 98,
+    "name": "Hammer",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "🪘": {
+    "id": 99,
+    "name": "Tom Drum",
+    "origin": "Rhythm Doctor",
+    "midi": 50,
+    "icon": "1fa98"
+  },
+  "sidestick": {
+    "id": 100,
+    "name": "Sidestick",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "ride2": {
+    "id": 101,
+    "name": "Ride",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "buttonpop": {
+    "id": 102,
+    "name": "Pop",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "skipshot": {
+    "id": 103,
+    "name": "Skipshot",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "otto_on": {
+    "id": 104,
+    "name": "Otto - Enabled",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "otto_off": {
+    "id": 105,
+    "name": "Otto - Disabled",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "otto_happy": {
+    "id": 106,
+    "name": "Otto - Happy",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "otto_stress": {
+    "id": 107,
+    "name": "Otto - Stressed",
+    "origin": "A Dance of Fire And Ice",
+    "midi": null,
+    "icon": null
+  },
+  "tab_sounds": {
+    "id": 108,
+    "name": "Sounds Tab",
+    "origin": "Rhythm Doctor",
+    "midi": 96,
+    "icon": null
+  },
+  "tab_rows": {
+    "id": 109,
+    "name": "Rows Tab",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "tab_actions": {
+    "id": 110,
+    "name": "Actions Tab",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "tab_decorations": {
+    "id": 111,
+    "name": "Decorations Tab",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "tab_rooms": {
+    "id": 112,
+    "name": "Rooms Tab",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "preecho": {
+    "id": 113,
+    "name": "Pre-echo Clap",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "tonk": {
+    "id": 114,
+    "name": "Tonk",
+    "origin": "Rhythm Doctor",
+    "midi": 74,
+    "icon": null
+  },
+  "rdclap": {
+    "id": 115,
+    "name": "Clap Hit",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "rdmistake": {
+    "id": 116,
+    "name": "Mistake",
+    "origin": "Rhythm Doctor",
+    "midi": null,
+    "icon": null
+  },
+  "midspin": {
+    "id": 117,
+    "name": "Midspin Clack",
+    "origin": "A Dance of Fire And Ice",
+    "midi": null,
+    "icon": null
+  },
+  "adofai_fire": {
+    "id": 118,
+    "name": "Fire Midspin",
+    "origin": "A Dance of Fire And Ice",
+    "midi": null,
+    "icon": null
+  },
+  "adofai_ice": {
+    "id": 119,
+    "name": "Ice Midspin",
+    "origin": "A Dance of Fire And Ice",
+    "midi": null,
+    "icon": null
+  },
+  "adofaikick": {
+    "id": 120,
+    "name": "Kick",
+    "origin": "A Dance of Fire And Ice",
+    "midi": null,
+    "icon": null
+  },
+  "adofaicymbal": {
+    "id": 121,
+    "name": "Level Complete",
+    "origin": "A Dance of Fire And Ice",
+    "midi": null,
+    "icon": null
+  },
+  "cowbell": {
+    "id": 122,
+    "name": "Cowbell",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": null
+  },
+  "karateman_throw": {
+    "id": 123,
+    "name": "Karate Man - Toss",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": null
+  },
+  "karateman_offbeat": {
+    "id": 124,
+    "name": "Karate Man - Offbeat Toss",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": null
+  },
+  "karateman_hit": {
+    "id": 125,
+    "name": "Karate Man - Hit",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": null
+  },
+  "karateman_bulb": {
+    "id": 126,
+    "name": "Karate Man - Bulb",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": null
+  },
+  "ook": {
+    "id": 127,
+    "name": "Ook",
+    "origin": "Rhythm Heaven",
+    "midi": 78,
+    "icon": null
+  },
+  "choruskid": {
+    "id": 128,
+    "name": "Chorus Kid",
+    "origin": "Rhythm Heaven",
+    "midi": 66.2,
+    "icon": null
+  },
+  "builttoscale": {
+    "id": 129,
+    "name": "Widget",
+    "origin": "Rhythm Heaven",
+    "midi": 60,
+    "icon": null
+  },
+  "perfectfail": {
+    "id": 130,
+    "name": "Perfect Failed",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": null
+  },
+  "🌟": {
+    "id": 131,
+    "name": "Skill Star",
+    "origin": "Rhythm Heaven",
+    "midi": null,
+    "icon": "1f31f"
+  },
+  "fnf_left": {
+    "id": 132,
+    "name": "Left",
+    "origin": "Friday Night Funkin'",
+    "midi": 66,
+    "icon": null
+  },
+  "fnf_down": {
+    "id": 133,
+    "name": "Down",
+    "origin": "Friday Night Funkin'",
+    "midi": 54,
+    "icon": null
+  },
+  "fnf_up": {
+    "id": 134,
+    "name": "Up",
+    "origin": "Friday Night Funkin'",
+    "midi": 66,
+    "icon": null
+  },
+  "fnf_right": {
+    "id": 135,
+    "name": "Right",
+    "origin": "Friday Night Funkin'",
+    "midi": 66,
+    "icon": null
+  },
+  "fnf_death": {
+    "id": 136,
+    "name": "Fail",
+    "origin": "Friday Night Funkin'",
+    "midi": null,
+    "icon": null
+  },
+  "gdcrash": {
+    "id": 137,
+    "name": "Crash",
+    "origin": "Geometry Dash",
+    "midi": null,
+    "icon": null
+  },
+  "gdcrash_orbs": {
+    "id": 138,
+    "name": "Crash + Orbs",
+    "origin": "Geometry Dash",
+    "midi": null,
+    "icon": null
+  },
+  "gd_coin": {
+    "id": 139,
+    "name": "Secret Coin",
+    "origin": "Geometry Dash",
+    "midi": null,
+    "icon": null
+  },
+  "gd_orbs": {
+    "id": 140,
+    "name": "Mana Orbs",
+    "origin": "Geometry Dash",
+    "midi": null,
+    "icon": null
+  },
+  "gd_diamonds": {
+    "id": 141,
+    "name": "Diamond",
+    "origin": "Geometry Dash",
+    "midi": null,
+    "icon": null
+  },
+  "gd_quit": {
+    "id": 142,
+    "name": "Quit",
+    "origin": "Geometry Dash",
+    "midi": null,
+    "icon": null
+  },
+  "bwomp": {
+    "id": 143,
+    "name": "Blast Processing",
+    "origin": "Geometry Dash",
+    "midi": 42,
+    "icon": null
+  },
+  "undertale_hit": {
+    "id": 144,
+    "name": "Damage",
+    "origin": "UNDERTALE",
+    "midi": null,
+    "icon": null
+  },
+  "undertale_crack": {
+    "id": 145,
+    "name": "Game Over",
+    "origin": "UNDERTALE",
+    "midi": null,
+    "icon": null
+  },
+  "sans_voice": {
+    "id": 146,
+    "name": "sans",
+    "origin": "UNDERTALE",
+    "midi": 52,
+    "icon": null
+  },
+  "megalovania": {
+    "id": 147,
+    "name": "Megalovania",
+    "origin": "UNDERTALE",
+    "midi": 50,
+    "icon": null
+  },
+  "🦴": {
+    "id": 148,
+    "name": "Megalovania Note",
+    "origin": "UNDERTALE",
+    "midi": 50,
+    "icon": "1f9b4"
+  },
+  "undertale_encounter": {
+    "id": 149,
+    "name": "Encounter",
+    "origin": "UNDERTALE",
+    "midi": null,
+    "icon": null
+  },
+  "toby": {
+    "id": 150,
+    "name": "Bark",
+    "origin": "UNDERTALE",
+    "midi": null,
+    "icon": null
+  },
+  "gaster": {
+    "id": 151,
+    "name": "Vanish",
+    "origin": "UNDERTALE",
+    "midi": null,
+    "icon": null
+  },
+  "lancersplat": {
+    "id": 152,
+    "name": "Lancer Splat",
+    "origin": "DELTARUNE",
+    "midi": null,
+    "icon": null
+  },
+  "isaac_hurt": {
+    "id": 153,
+    "name": "Damage",
+    "origin": "The Binding of Isaac: Rebirth",
+    "midi": null,
+    "icon": null
+  },
+  "isaac_dead": {
+    "id": 154,
+    "name": "Death",
+    "origin": "The Binding of Isaac: Rebirth",
+    "midi": null,
+    "icon": null
+  },
+  "isaac_mantle": {
+    "id": 155,
+    "name": "Holy Mantle",
+    "origin": "The Binding of Isaac: Repentance",
+    "midi": null,
+    "icon": null
+  },
+  "BABA": {
+    "id": 156,
+    "name": "MOVE",
+    "origin": "Baba is You",
+    "midi": null,
+    "icon": null
+  },
+  "YOU": {
+    "id": 157,
+    "name": "RULE",
+    "origin": "Baba is You",
+    "midi": null,
+    "icon": null
+  },
+  "DEFEAT": {
+    "id": 158,
+    "name": "DEFEAT",
+    "origin": "Baba is You",
+    "midi": null,
+    "icon": null
+  },
+  "vvvvvv_flip": {
+    "id": 159,
+    "name": "Flip",
+    "origin": "VVVVVV",
+    "midi": null,
+    "icon": null
+  },
+  "vvvvvv_hurt": {
+    "id": 160,
+    "name": "Sad",
+    "origin": "VVVVVV",
+    "midi": null,
+    "icon": null
+  },
+  "vvvvvv_checkpoint": {
+    "id": 161,
+    "name": "Checkpoint",
+    "origin": "VVVVVV",
+    "midi": null,
+    "icon": null
+  },
+  "vvvvvv_flash": {
+    "id": 162,
+    "name": "Flash",
+    "origin": "VVVVVV",
+    "midi": null,
+    "icon": null
+  },
+  "terraria_star": {
+    "id": 163,
+    "name": "Magic",
+    "origin": "Terraria",
+    "midi": null,
+    "icon": null
+  },
+  "terraria_pot": {
+    "id": 164,
+    "name": "Shatter",
+    "origin": "Terraria",
+    "midi": null,
+    "icon": null
+  },
+  "terraria_reforge": {
+    "id": 165,
+    "name": "Reforge",
+    "origin": "Terraria",
+    "midi": null,
+    "icon": null
+  },
+  "terraria_guitar": {
+    "id": 166,
+    "name": "Stellar Tune",
+    "origin": "Terraria",
+    "midi": 60,
+    "icon": null
+  },
+  "terraria_axe": {
+    "id": 167,
+    "name": "The Axe",
+    "origin": "Terraria",
+    "midi": 36,
+    "icon": null
+  },
+  "celeste_dash": {
+    "id": 168,
+    "name": "Dash",
+    "origin": "Celeste",
+    "midi": null,
+    "icon": null
+  },
+  "celeste_death": {
+    "id": 169,
+    "name": "Death",
+    "origin": "Celeste",
+    "midi": null,
+    "icon": null
+  },
+  "celeste_spring": {
+    "id": 170,
+    "name": "Spring",
+    "origin": "Celeste",
+    "midi": null,
+    "icon": null
+  },
+  "celeste_diamond": {
+    "id": 171,
+    "name": "Dash Gem",
+    "origin": "Celeste",
+    "midi": null,
+    "icon": null
+  },
+  "amogus_emergency": {
+    "id": 172,
+    "name": "Emergency Meeting",
+    "origin": "Among Us",
+    "midi": 58.4,
+    "icon": null
+  },
+  "amogus_kill": {
+    "id": 173,
+    "name": "Kill",
+    "origin": "Among Us",
+    "midi": null,
+    "icon": null
+  },
+  "amongus": {
+    "id": 174,
+    "name": "AMONG US",
+    "origin": "Unknown",
+    "midi": null,
+    "icon": null
+  },
+  "amongdrip": {
+    "id": 175,
+    "name": "Among Drip",
+    "origin": "Leonz",
+    "midi": 36,
+    "icon": null
+  },
+  "amogus": {
+    "id": 176,
+    "name": "Amogus",
+    "origin": "Unknown",
+    "midi": null,
+    "icon": null
+  },
+  "minecraft_explosion": {
+    "id": 177,
+    "name": "Explosion",
+    "origin": "Minecraft",
+    "midi": null,
+    "icon": null
+  },
+  "minecraft_anvil": {
+    "id": 178,
+    "name": "Anvil",
+    "origin": "Minecraft",
+    "midi": null,
+    "icon": null
+  },
+  "minecraft_bell": {
+    "id": 179,
+    "name": "Bell",
+    "origin": "Minecraft",
+    "midi": 66,
+    "icon": null
+  },
+  "noteblock_harp": {
+    "id": 180,
+    "name": "Note Block - Harp",
+    "origin": "Minecraft",
+    "midi": 66,
+    "icon": null
+  },
+  "noteblock_bass": {
+    "id": 181,
+    "name": "Note Block - Bass",
+    "origin": "Minecraft",
+    "midi": 42,
+    "icon": null
+  },
+  "noteblock_snare": {
+    "id": 182,
+    "name": "Note Block - Snare",
+    "origin": "Minecraft",
+    "midi": null,
+    "icon": null
+  },
+  "noteblock_click": {
+    "id": 183,
+    "name": "Note Block - Hat",
+    "origin": "Minecraft",
+    "midi": null,
+    "icon": null
+  },
+  "noteblock_bell": {
+    "id": 184,
+    "name": "Note Block - Bell",
+    "origin": "Minecraft",
+    "midi": 90,
+    "icon": null
+  },
+  "noteblock_banjo": {
+    "id": 185,
+    "name": "Note Block - Banjo",
+    "origin": "Minecraft",
+    "midi": 66,
+    "icon": null
+  },
+  "noteblock_bit": {
+    "id": 186,
+    "name": "Note Block - Bit",
+    "origin": "Minecraft",
+    "midi": 66,
+    "icon": null
+  },
+  "noteblock_chime": {
+    "id": 187,
+    "name": "Note Block - Chime",
+    "origin": "Minecraft",
+    "midi": 90,
+    "icon": null
+  },
+  "noteblock_xylophone": {
+    "id": 188,
+    "name": "Note Block - Xylophone",
+    "origin": "Minecraft",
+    "midi": 78,
+    "icon": null
+  },
+  "noteblock_guitar": {
+    "id": 189,
+    "name": "Note Block - Guitar",
+    "origin": "Minecraft",
+    "midi": 54,
+    "icon": null
+  },
+  "noteblock_flute": {
+    "id": 190,
+    "name": "Note Block - Flute",
+    "origin": "Minecraft",
+    "midi": 78,
+    "icon": null
+  },
+  "noteblock_pling": {
+    "id": 191,
+    "name": "Note Block - Pling",
+    "origin": "Minecraft",
+    "midi": 66,
+    "icon": null
+  }
+}

@@ -1,0 +1,131 @@
+If you're getting an error when trying to load a MIDI file,
+check to see if the error message matches an error described by one of the policies below.
+If so, try changing the value for that policy in "readingsettings.json".
+The most important information in an error message is typically at the top.
+Look for the word "Exception" near the top of the error message.
+
+UnexpectedTrackChunksCountPolicy:
+    The reaction of the reading engine on unexpected track chunks count.
+    The default is "Ignore".
+    The default for MIDI2TDW is "Ignore".
+    Allowed values for this policy:
+        "Ignore" - Ignore unexpected track chunks count.
+        "Abort" - Abort reading and throw an "UnexpectedTrackChunksCountException".
+    
+ExtraTrackChunkPolicy:
+    The reaction of the reading engine on new track chunk if already read track chunks count is greater or equals the one declared in the file's header chunk.
+    The default is "Read".
+    The default for MIDI2TDW is "Read".
+    Allowed values for this policy:
+        "Read" - Read a track chunk anyway.
+        "Skip" - Skip chunk and go to the next one.
+
+UnknownChunkIdPolicy:
+    The reaction of the reading engine on chunk with unknown ID.
+    The default is "ReadAsUnknownChunk".
+    The default for MIDI2TDW is "ReadAsUnknownChunk".
+    Allowed values for this policy:
+        "ReadAsUnknownChunk" - Read the chunk as "UnknownChunk".
+        "Skip" - Skip this chunk and go to the next one.
+        "Abort" - Abort reading and throw an "UnknownChunkException".
+
+MissedEndOfTrackPolicy:
+    The reaction of the reading engine on missed "End Of Track" event.
+    The default is "Ignore".
+    The default for MIDI2TDW is "Ignore".
+    Allowed values for this policy:
+        "Ignore" - Ignore missing of the "End Of Track" event and try to read a track chunk relying on the chunk's size.
+        "Abort" - Abort reading and throw an "MissedEndOfTrackEventException".
+
+SilentNoteOnPolicy:
+    The reaction of the reading engine on "Note On" events with velocity of zero.
+    The default is "NoteOff".
+    The default for MIDI2TDW is "NoteOff".
+    Allowed values for this policy:
+        "NoteOff" - Read an event as "NoteOffEvent".
+        "NoteOn" - Read an event as "NoteOnEvent".
+
+InvalidChunkSizePolicy:
+    The reaction of the reading engine on difference between actual chunk's size and the one declared in its header.
+    The default is "Abort".
+    The default for MIDI2TDW is "Ignore".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "InvalidChunkSizeException".
+        "Ignore" - Ignore difference between actual chunk's size and the declared one.
+
+UnknownFileFormatPolicy:
+    The reaction of the reading engine on unknown file format stored in a header chunk.
+    The default is "Abort".
+    The default for MIDI2TDW is "Ignore".
+    Allowed values for this policy:
+        "Ignore" - Ignore unknown file format and try to read chunks.
+        "Abort" - Abort reading and throw an "UnknownFileFormatException".
+
+UnknownChannelEventPolicy:
+    The reaction of the reading engine on unknown channel event.
+    The default is "Abort".
+    The default for MIDI2TDW is "SkipStatusByteAndOneDataByte".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "UnknownChannelEventException".
+        "SkipStatusByte" - Skip only invalid status byte and start next MIDI event reading.
+        "SkipStatusByteAndOneDataByte" - Skip invalid status byte and one data byte, and start next MIDI event reading.
+        "SkipStatusByteAndTwoDataBytes" - Skip invalid status byte and two data bytes, and start next MIDI event reading.
+        "UseCallback" - Use callback to manually decide how reading engine should handle invalid unknown channel event.
+            WARNING: MIDI2TDW does not provide a callback for this.
+
+InvalidChannelEventParameterValuePolicy:
+    The reaction of the reading engine on invalid value of a channel event's parameter value.
+    The default is "Abort".
+    The default for MIDI2TDW is "ReadValid".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "InvalidChannelEventParameterValueException".
+        "ReadValid" - Read byte and take its lower (rightmost) seven bits as the final value.
+        "SnapToLimits" - Read value and snap it to limits of the allowable range if it is out of them.
+
+InvalidMetaEventParameterValuePolicy:
+    The reaction of the reading engine on invalid value of a meta event's parameter value.
+    The default is "Abort".
+    The default for MIDI2TDW is "SnapToLimits".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "InvalidMetaEventParameterValueException".
+        "SnapToLimits" - Read value and snap it to limits of the allowable range if it is out of them.
+
+InvalidSystemCommonEventParameterValuePolicy:
+    The reaction of the reading engine on invalid value of a system common event's parameter value.
+    The default is "Abort".
+    The default for MIDI2TDW is "Abort".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "InvalidSystemCommonEventParameterValueException".
+        "SnapToLimits" - Read value and snap it to limits of the allowable range if it is out of them.
+
+NotEnoughBytesPolicy:
+    The reaction of the reading engine on lack of bytes in the underlying stream that are needed to read MIDI data (for example, DWORD requires 4 bytes available).
+    The default is "Abort".
+    The default for MIDI2TDW is "Ignore".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "NotEnoughBytesException".
+        "Ignore" - Ignore lack of bytes in the reader's underlying stream and just finish reading.
+
+NoHeaderChunkPolicy:
+    The reaction of the reading engine on missing of the header chunk in the MIDI file.
+    The default is "Abort".
+    The default for MIDI2TDW is "Ignore".
+    Allowed values for this policy:
+        "Abort" - Abort reading and throw an "NoHeaderChunkException".
+        "Ignore" - Ignore missing of the header chunk.
+
+ZeroLengthDataPolicy:
+    The reaction of the reading engine on zero-length objects such as strings or arrays.
+    The default is "ReadAsEmptyObject".
+    The default for MIDI2TDW is "ReadAsEmptyObject".
+    Allowed values for this policy:
+        "ReadAsEmptyObject" - Read as an object with length of zero.
+        "ReadAsNull" - Read as "null".
+
+EndOfTrackStoringPolicy:
+    The reaction of the reading engine on End Of Track event encountered.
+    The default is "Omit".
+    The default for MIDI2TDW is "Omit".
+    Allowed values for this policy:
+        "Omit" - Omit an event and don't store it to the "TrackChunk.Events".
+        "Store" - Store an event to the "TrackChunk.Events".
