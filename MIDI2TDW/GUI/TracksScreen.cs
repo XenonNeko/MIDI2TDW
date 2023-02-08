@@ -216,6 +216,9 @@ public class TracksScreen : MonoBehaviour
         Debug.Log("Export finished.");
 
         diagnostics.SnapshotFile(path, "exported-tdw.txt");
+
+        path = path.Replace(@"/", @"\");
+        System.Diagnostics.Process.Start("explorer.exe", "/select," + path);
     }
 }
 
