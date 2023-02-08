@@ -27,7 +27,7 @@ In this folder, you will find the following subfolders:
     This ensures that the Diagnostics File is not cluttered with too much irrelevant information,
     making the issue faster to track down.
     
-    Diagnostics Files contain the following data from your session, compressed and encrypted:
+    Diagnostics Files contain the following data from your session:
         Log files
             These contain logs of what happened while the application was running,
             including any errors that occurred.
