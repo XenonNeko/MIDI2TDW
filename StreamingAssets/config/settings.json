@@ -1,3 +1,5 @@
 {
+    "debugMidiImport": 0,
+    "dumpConversionIntermediates": 0,
     "doVolumeActions": 0
 }

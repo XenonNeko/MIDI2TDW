@@ -97,16 +97,28 @@ public class TracksScreen : MonoBehaviour
 
     public MappedTrack[] GetMappedTracks()
     {
-        List<MappedTrack> mappedTracks = new();
+        List<MappedTrack> audibleMappedTracks = new();
         bool hasSolos = mixer.Contains(MIX_SOLO);
+
         for (int i = 0; i < numTracks; i++)
         {
-            if (hasSolos ? mixer[i] == MIX_SOLO : mixer[i] == MIX_ON)
+            int trackMixStatus = mixer[i];
+            bool isSolo = trackMixStatus == MIX_SOLO;
+            bool isMute = trackMixStatus == MIX_MUTE;
+            if (hasSolos && !isSolo)
             {
-                mappedTracks.Add(trackGuis[i].GetMappedTrack());
+                continue;
             }
+            if (!hasSolos && isMute)
+            {
+                continue;
+            }
+            TrackGui trackGui = trackGuis[i];
+            MappedTrack mappedTrack = trackGui.GetMappedTrack();
+            audibleMappedTracks.Add(mappedTrack);
         }
-        return mappedTracks.ToArray();
+
+        return audibleMappedTracks.ToArray();
     }
 
     [SerializeField]
@@ -160,34 +172,59 @@ public class TracksScreen : MonoBehaviour
         }    
     }
 
+    public static bool dumpConversionIntermediates = false;
+
     public void Next()
     {
         Debug.Log("Exporting Thirty Dollar Website file...");
 
-        string path = Path.Combine(Application.streamingAssetsPath, "out", $"{filename}.mapinfo.json");
-        //IR1Json mapInfo = new() { mappedTracks = GetMappedTracks() };
-        //string json = JsonConvert.SerializeObject(mapInfo, Formatting.Indented);
-        //System.IO.File.WriteAllText(path, json);
+        MappedTrack[] mappedTracks = GetMappedTracks();
+
+        string path;
+
+        if (dumpConversionIntermediates)
+        {
+            path = Path.Combine(Application.streamingAssetsPath, "debug");
+            Directory.CreateDirectory(path);
+            path = Path.Combine(path, $"{filename}.mapinfo.json");
+            IR1Json mapInfo = new() { mappedTracks = mappedTracks };
+            string json = JsonConvert.SerializeObject(mapInfo, Formatting.Indented);
+            File.WriteAllText(path, json);
+        }
 
         try
         {
+            foreach (MappedTrack mappedTrack in mappedTracks)
+            {
+                MappedTrackRepair.RepairTrack(mappedTrack);
+            }
+
             Debug.Log("Performing IR First Pass...");
-            var ir1 = IRFirstPass.FirstPass(GetMappedTracks());
-            //json = JsonConvert.SerializeObject(ir1, Formatting.Indented);
-            //path = System.IO.Path.Combine(Application.streamingAssetsPath, "out", $"{filename}.ir1.json");
-            //System.IO.File.WriteAllText(path, json);
+            var ir1 = IRFirstPass.FirstPass(mappedTracks);
+            if (dumpConversionIntermediates)
+            {
+                string json = JsonConvert.SerializeObject(ir1, Formatting.Indented);
+                path = Path.Combine(Application.streamingAssetsPath, "debug", $"{filename}.ir1.json");
+                File.WriteAllText(path, json);
+            }
 
             Debug.Log("Performing IR Second Pass...");
             var ir2 = IRSecondPass.SecondPass(ir1);
-            //json = JsonConvert.SerializeObject(ir2, Formatting.Indented);
-            //path = System.IO.Path.Combine(Application.streamingAssetsPath, "out", $"{filename}.ir2.json");
-            //System.IO.File.WriteAllText(path, json);
+            if (dumpConversionIntermediates)
+            {
+                string json = JsonConvert.SerializeObject(ir2, Formatting.Indented);
+                path = Path.Combine(Application.streamingAssetsPath, "debug", $"{filename}.ir2.json");
+                File.WriteAllText(path, json);
+            }
 
             Debug.Log("Performing IR Third Pass...");
             var ir3 = IRThirdPass.ThirdPass(ir2);
-            //json = JsonConvert.SerializeObject(ir3, Formatting.Indented);
-            //path = System.IO.Path.Combine(Application.streamingAssetsPath, "out", $"{filename}.ir3.json");
-            //System.IO.File.WriteAllText(path, json);
+            if (dumpConversionIntermediates)
+            {
+                string json = JsonConvert.SerializeObject(ir3, Formatting.Indented);
+                path = Path.Combine(Application.streamingAssetsPath, "debug", $"{filename}.ir3.json");
+                File.WriteAllText(path, json);
+            }
 
             Debug.Log("Performing TDW First Pass...");
             var tdw1 = TdwFirstPass.FirstPass(ir3);
@@ -207,9 +244,11 @@ public class TracksScreen : MonoBehaviour
         }
         catch (Exception e)
         {
+            Debug.LogException(e);
+
             errorMessage.SetMessage(e.ToString());
             errorMessage.Open();
-
+        
             Debug.Log("Export failed!");
             return;
         }

@@ -7,6 +7,11 @@ using UnityEngine;
 
 public static class IRFirstPass
 {
+    public static SevenBitNumber GetProgramNumber(MidiSound midiSound, MidiTrack sourceTrack)
+    {
+        return sourceTrack.isPercussion ? midiSound.noteNumber : midiSound.programNumber;
+    }
+
     public static IntermediateChord[] FirstPass(MappedTrack[] input)
     {
         // Initialize the output to a buffer which can hold all sounds from all tracks.
@@ -32,8 +37,10 @@ public static class IRFirstPass
             {
                 MidiSound midiSound = midiSounds[i];
                 IntermediateSound interSound = new();
-                SevenBitNumber key = midiTrack.isPercussion ? midiSound.noteNumber : midiSound.programNumber;
-                TdwProgramMap mapping = mappedTrack.programMappings[key];
+                SevenBitNumber programNumber = GetProgramNumber(midiSound, midiTrack);
+
+                TdwProgramMap mapping = mappedTrack.programMappings[programNumber];
+
                 interSound.tdwSound = mapping.sound;
                 interSound.pitchParameter = mapping.GetPitch(midiSound.noteNumber);
                 interSound.volume = midiSound.GetVolume();

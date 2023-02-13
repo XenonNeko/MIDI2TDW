@@ -5,6 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// A GUI for assigning a Thirty Dollar Website sound to a MIDI Program.
+/// </summary>
+/// <remarks>
+/// Note Numbers take the place of Programs in percussion tracks.
+/// </remarks>
 public class ProgramMapGui : MonoBehaviour
 {
     [Header("UI")]

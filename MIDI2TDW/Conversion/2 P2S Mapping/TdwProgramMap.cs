@@ -29,4 +29,9 @@ public class TdwProgramMap
         }
         return pitchOffset;
     }
+
+    public override string ToString()
+    {
+        return $"(sound: {sound}, useMidiTuning: {useMidiTuning}, pitchOffset: {pitchOffset})";
+    }
 }

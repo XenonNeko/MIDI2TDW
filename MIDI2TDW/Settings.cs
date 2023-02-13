@@ -1,15 +1,21 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Settings : MonoBehaviour
 {
     public class SettingsJson
     {
+        public int doIntro;
+        public int debugMidiImport;
+        public int dumpConversionIntermediates;
         public int doVolumeActions;
+
         public int doPaletteRandomization;
         public int doHueShift;
         public float hueShiftAmount;
@@ -75,6 +81,11 @@ public class Settings : MonoBehaviour
         }
     }
 
+    private bool Eval(int value)
+    {
+        return value > 0;
+    }
+
     private void DoPhysics()
     {
         Canvas canvas = FindObjectOfType<Canvas>();
@@ -104,6 +115,28 @@ public class Settings : MonoBehaviour
         }
     }
 
+    private void DoIf(Action action, int condition)
+    {
+        if (condition <= 0)
+        {
+            return;
+        }
+        action.Invoke();
+    }
+
+    private void ApplySettings()
+    {
+        TdwStringify.doIntro = Eval(AppSettings.doIntro);
+        MidiFileImporter.debugMidiImport = Eval(AppSettings.debugMidiImport);
+        TracksScreen.dumpConversionIntermediates = Eval(AppSettings.dumpConversionIntermediates);
+        TdwThirdPass.doVolumeActions = Eval(AppSettings.doVolumeActions);
+
+        DoIf(RandomizePalette, AppSettings.doPaletteRandomization);
+        DoIf(HueShift, AppSettings.doHueShift);
+        DoIf(JitterUiElements, AppSettings.doJitter);
+        DoIf(DoPhysics, AppSettings.doPhysics);
+    }
+
     public void LoadAppSettings()
     {
         Debug.Log("Loading settings...");
@@ -129,27 +162,11 @@ public class Settings : MonoBehaviour
         string json = File.ReadAllText(defaultSoundsFile);
         AppSettings = JsonConvert.DeserializeObject<SettingsJson>(json);
 
-        Debug.Log("Settings read in successfully, now importing...");
+        Debug.Log("Settings parsed successfully, now applying...");
 
-        TdwThirdPass.doVolumeActions = AppSettings.doVolumeActions > 0;
-        if (AppSettings.doPaletteRandomization > 0)
-        {
-            RandomizePalette();
-        }
-        if (AppSettings.doHueShift > 0)
-        {
-            HueShift();
-        }
-        if (AppSettings.doJitter > 0)
-        {
-            JitterUiElements();
-        }
-        if (AppSettings.doPhysics > 0)
-        {
-            DoPhysics();
-        }
+        ApplySettings();
 
-        Debug.Log("Settings imported successfully.");
+        Debug.Log("Settings applied successfully.");
     }
 
     public Melanchall.DryWetMidi.Core.ReadingSettings ReadingSettings { get; private set; }

@@ -5814,7 +5814,7 @@ MonoBehaviour:
   versionPrefix: 'Early Access '
   currentVersion:
     ver: 
-    date: 8 Feb 2023
+    date: 12 Feb 2023
     dl: 
   versionBadge: {fileID: 311909522}
   url: https://xenonneko.gamejolt.io/midi2tdw/latest.json
@@ -8215,7 +8215,7 @@ GameObject:
   - component: {fileID: 933475965}
   - component: {fileID: 933475964}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: tracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9844,7 +9844,7 @@ GameObject:
   - component: {fileID: 1131024904}
   - component: {fileID: 1131024903}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11309,7 +11309,7 @@ GameObject:
   - component: {fileID: 1309898956}
   - component: {fileID: 1309898955}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11936,7 +11936,7 @@ GameObject:
   - component: {fileID: 1444542904}
   - component: {fileID: 1444542903}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13030,7 +13030,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1614815154}
   m_HandleRect: {fileID: 1614815153}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16776,7 +16776,7 @@ GameObject:
   - component: {fileID: 1858409207}
   - component: {fileID: 1858409206}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17363,7 +17363,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 814099772}
   m_HandleRect: {fileID: 814099771}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

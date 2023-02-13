@@ -1,6 +1,7 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public static class TdwStringify
 {
@@ -14,8 +15,12 @@ public static class TdwStringify
         return result;
     }
 
+    public static bool doIntro;
+    private const string introTdw = "!speed@960|bong|!pulse@1,1|!loopmany@30|!speed@65|mrbeast|!volume@400|!flash|!combine|boom|!volume@100|!cut|!bg@#0078d7,0|🚫|_pause|!bg@#36393c,0";
+
     public static string Stringify(TdwEvent[] input)
     {
-        return string.Join('|', input.ForEach(e => e.ToString()));
+        string intro = doIntro ? introTdw : string.Empty;
+        return intro + string.Join('|', input.ForEach(e => e.ToString()));
     }
 }

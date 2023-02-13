@@ -72,6 +72,7 @@ public class FileSelection : MonoBehaviour
         isAwaitingImportTask = true;
 
         Debug.Log("Importing file...");
+        MidiFileImporter.debugPath = Path.Combine(Application.streamingAssetsPath, "debug");
         importTask = Task.Run(() => MidiFileImporter.TryImportMidiFile(path, settings.ReadingSettings));
 
         importTask.ConfigureAwait(false);

@@ -6,6 +6,9 @@ In this folder, you will find the following subfolders:
 "config"
     This holds user-customizable configuration files for the application.
     They are in JSON format.
+    
+"debug"
+    If present, this is where debugging information will appear.
 
 "diagnostics"
     This is where Diagnostics Files will end up when you generate them.

@@ -1,22 +1,88 @@
-using Melanchall.DryWetMidi.Common;
+﻿using Melanchall.DryWetMidi.Common;
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using Melanchall.DryWetMidi.Tools;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Debug = UnityEngine.Debug;
 
 public static class MidiFileImporter
 {
+    public static string debugPath;
+    public static bool debugMidiImport = true;
+
     private const int CH_PERCUSSION = 9;
 
-    private static List<MidiTrack> SingleTrackFileToTracks(MidiFile file)
+    private static void PrintControlChangeEvent(ControlChangeEvent controlChangeEvent, StringBuilder stringBuilder)
     {
+        switch (controlChangeEvent.ControlNumber)
+        {
+            case 7:
+                stringBuilder.AppendLine(
+                    "[ControlChangeEvent (ChannelVolume)] " +
+                    $"Channel: {controlChangeEvent.Channel}, " +
+                    $"ControlValue: {controlChangeEvent.ControlValue}");
+                break;
+            default:
+                stringBuilder.AppendLine(
+                    "[ControlChangeEvent] " +
+                    $"Channel: {controlChangeEvent.Channel}, " +
+                    $"ControlValue: {controlChangeEvent.ControlValue}");
+                break;
+        }
+    }
+
+    private static void PrintTimedEvent(TimedEvent timedEvent, StringBuilder stringBuilder)
+    {
+        switch (timedEvent.Event)
+        {
+            case SequenceTrackNameEvent sequenceTrackName:
+                stringBuilder.AppendLine(
+                    "[SequenceTrackNameEvent] "
+                    + $"Text: \"{sequenceTrackName.Text}\"");
+                break;
+            case ProgramChangeEvent programChange:
+                stringBuilder.AppendLine(
+                    "[ProgramChangeEvent] "
+                    + $"Channel: {programChange.Channel}, "
+                    + $"ProgramNumber: {programChange.ProgramNumber}");
+                break;
+            case ControlChangeEvent controlChange:
+                PrintControlChangeEvent(controlChange, stringBuilder);
+                break;
+        }
+    }
+
+    private static void Print(ITimedObject timedObject, StringBuilder stringBuilder, TempoMap tempoMap = null)
+    {
+        if (!debugMidiImport)
+        {
+            return;
+        }
+        switch (timedObject)
+        {
+            case Note note:
+                MetricTimeSpan timeMetric = note.TimeAs<MetricTimeSpan>(tempoMap);
+                stringBuilder.AppendLine(
+                    "[Note] " +
+                    $"Channel: {note.Channel}, " +
+                    $"NoteNumber: {note.NoteNumber}, " +
+                    $"Velocity: {note.Velocity}, " +
+                    $"μs: {timeMetric.TotalMicroseconds}");
+                break;
+            case TimedEvent timedEvent:
+                PrintTimedEvent(timedEvent, stringBuilder);
+                break;
+        }
+    }
+
+    private static List<MidiTrack> SingleTrackFileToTracks(MidiFile file, string debugName)
+    {
+        StringBuilder debugLog = new();
+
         TempoMap tempoMap = file.GetTempoMap();
         ICollection<TimedEvent> timedEvents = file.GetTimedEvents();
 
@@ -72,6 +138,8 @@ public static class MidiFileImporter
         int channel;
         foreach (TimedEvent timedEvent in timedEvents)
         {
+            Print(timedEvent, debugLog, tempoMap);
+
             MetricTimeSpan timeMetric = timedEvent.TimeAs<MetricTimeSpan>(tempoMap);
             switch (timedEvent.Event)
             {
@@ -123,7 +191,12 @@ public static class MidiFileImporter
             }
             midiTrack.programs = programs[ch].ToArray();
 
-            Debug.Log($"channel: {ch + 1}, # of sounds: {midiTrack.sounds.Length}, # of programs: {midiTrack.programs.Length}, isPercussion: {midiTrack.isPercussion}");
+            DebugLog("# END OF MIDI DATA", debugLog);
+            DebugLog("", debugLog);
+            DebugLog($"# channel: {ch + 1}, ", debugLog);
+            DebugLog($"# number of sounds: {midiTrack.sounds.Length}", debugLog);
+            DebugLog($"# number of programs: {midiTrack.programs.Length}", debugLog);
+            DebugLog($"# isPercussion: {midiTrack.isPercussion}", debugLog);
 
             if (midiTrack.sounds.Length == 0)
             {
@@ -133,11 +206,15 @@ public static class MidiFileImporter
             list.Add(midiTrack);
         }
 
+        WriteDebugLog(debugLog, $"{debugName}.fmt0");
+
         return list;
     }
 
-    private static MidiTrack ChunkToTrack(MidiFile chunk, TempoMap tempoMap)
+    private static MidiTrack ChunkToTrack(MidiFile chunk, TempoMap tempoMap, string debugName)
     {
+        StringBuilder debugLog = new();
+
         ICollection<ITimedObject> timedObjects = chunk.GetObjects(ObjectType.Note | ObjectType.TimedEvent);
 
         MidiTrack midiTrack = new();
@@ -147,7 +224,7 @@ public static class MidiFileImporter
 
         List<SevenBitNumber> programs = new();
 
-        SevenBitNumber programNumber = default;
+        SevenBitNumber? programNumber = null;
         SevenBitNumber ccChannelVolume = (SevenBitNumber)0;
 
         void SetChannel(FourBitNumber channel)
@@ -191,8 +268,12 @@ public static class MidiFileImporter
             programNumber = p_programNumber;
         }
 
+        bool hasUnknownPrograms = false;
+
         foreach (ITimedObject timedObject in timedObjects)
         {
+            Print(timedObject, debugLog, tempoMap);
+
             switch (timedObject)
             {
                 case Note note:
@@ -200,9 +281,16 @@ public static class MidiFileImporter
                     SevenBitNumber noteNumber = note.NoteNumber;
                     AddNote(noteNumber);
                     MetricTimeSpan timeMetric = note.TimeAs<MetricTimeSpan>(tempoMap);
+
+                    if (programNumber is null)
+                    {
+                        hasUnknownPrograms = !isPercussion;
+                        programNumber = (SevenBitNumber?)0;
+                    }
+
                     MidiSound sound = new()
                     {
-                        programNumber = programNumber,
+                        programNumber = programNumber.Value,
                         noteNumber = noteNumber,
                         velocity = note.Velocity,
                         channelVolume = ccChannelVolume,
@@ -241,7 +329,15 @@ public static class MidiFileImporter
         }
         midiTrack.programs = programs.ToArray();
 
-        Debug.Log($"track: \"{midiTrack.name}\", # of sounds: {midiTrack.sounds.Length}, # of programs: {midiTrack.programs.Length}, isPercussion: {midiTrack.isPercussion}");
+        DebugLog("# END OF MIDI DATA", debugLog);
+        DebugLog("", debugLog);
+        DebugLog($"# track name: \"{midiTrack.name}\"", debugLog);
+        DebugLog($"# number of sounds: {midiTrack.sounds.Length}", debugLog);
+        DebugLog($"# number of programs: {midiTrack.programs.Length}", debugLog);
+        DebugLog($"# isPercussion: {midiTrack.isPercussion}", debugLog);
+        DebugLog($"# hasUnknownPrograms: {hasUnknownPrograms}", debugLog);
+
+        WriteDebugLog(debugLog, $"{debugName}.midi");
 
         if (midiTrack.sounds.Length == 0)
         {
@@ -287,8 +383,7 @@ public static class MidiFileImporter
             }
         }
 
-        string path = Path.Combine(UnityEngine.Application.streamingAssetsPath, "debug", $"drywetmidi-output.txt");
-        File.WriteAllText(path, builder.ToString());
+        WriteDebugLog(builder, "drywetmidi-output");
     }
 
     private static void PrintChunks(MidiFile[] chunks, TempoMap tempoMap)
@@ -318,8 +413,7 @@ public static class MidiFileImporter
                 }
             }
 
-            string path = Path.Combine(UnityEngine.Application.streamingAssetsPath, "debug", $"drywetmidi-notes-track_{i}.txt");
-            File.WriteAllText(path, builder.ToString());
+            WriteDebugLog(builder, $"drywetmidi-notes-track_{i}");
         }
     }
 
@@ -330,9 +424,31 @@ public static class MidiFileImporter
     public static bool HasException { get; private set; }
     public static Exception LastException { get; private set; }
 
+    private static void DebugLog(string message, StringBuilder log)
+    {
+        if (!debugMidiImport)
+        {
+            return;
+        }
+        log.AppendLine(message);
+    }
+    private static void WriteDebugLog(StringBuilder log, string name)
+    {
+        if (!debugMidiImport)
+        {
+            return;
+        }
+        Directory.CreateDirectory(debugPath);
+        string path = Path.Combine(debugPath, $"{name}.log");
+        File.WriteAllText(path, log.ToString());
+    }
+
     public static MidiTrack[] TryImportMidiFile(string path, ReadingSettings readingSettings)
     {
-        Debug.Log($"Importing MIDI file \"{Path.GetFileNameWithoutExtension(path)}\"");
+        StringBuilder debugLog = new();
+
+        string filename = Path.GetFileNameWithoutExtension(path);
+        DebugLog($"Importing MIDI file \"{filename}\"", debugLog);
 
         diag_elapsed_midiread = TimeSpan.Zero;
         diag_elapsed_midisplit = TimeSpan.Zero;
@@ -390,7 +506,7 @@ public static class MidiFileImporter
                 isFormat0 = true;
                 chunks = null;
 
-                Debug.Log("File is format 0, will use custom splitter in 'midiprocess' phase");
+                DebugLog("File is format 0, will use custom splitter in 'midiprocess' phase", debugLog);
                 //PrintChunks(chunks, tempoMap);
                 break;
             case MidiFileFormat.MultiTrack:
@@ -404,17 +520,18 @@ public static class MidiFileImporter
                 // Import it anyway. If it has no notes or programs, it will be discarded anyway.
                 chunks = midiTracks.ToArray();
 
-                Debug.Log("File is format 1");
+                DebugLog("File is format 1", debugLog);
                 break;
             case MidiFileFormat.MultiSequence:
                 midiTracks = midiFile.SplitByChunks(splitFileByChunksSettings);
 
                 chunks = midiTracks.ToArray();
 
-                Debug.Log("File is format 2");
+                DebugLog("File is format 2", debugLog);
                 break;
             default:
-                Debug.LogError($"Unrecognized MIDI format '{midiFile.OriginalFormat}'");
+                DebugLog($"[]ERROR Unrecognized MIDI format '{midiFile.OriginalFormat}'", debugLog);
+                WriteDebugLog(debugLog, filename);
                 return null;
         }
 
@@ -428,13 +545,13 @@ public static class MidiFileImporter
         List<MidiTrack> tracks = new();
         if (isFormat0)
         {
-            tracks = SingleTrackFileToTracks(midiFile);
+            tracks = SingleTrackFileToTracks(midiFile, $"{filename}.fmt0");
         }
         else
         {
             for (int i = 0; i < chunks.Length; i++)
             {
-                MidiTrack track = ChunkToTrack(chunks[i], tempoMap);
+                MidiTrack track = ChunkToTrack(chunks[i], tempoMap, $"{filename}.chunk_{i}");
                 if (track is null)
                 {
                     continue;
@@ -447,6 +564,7 @@ public static class MidiFileImporter
         diag_elapsed_midiprocess = sw.Elapsed;
         #endregion
 
+        WriteDebugLog(debugLog, filename);
         return tracks.ToArray();
     }
 }

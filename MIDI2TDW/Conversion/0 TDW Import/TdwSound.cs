@@ -34,6 +34,6 @@ public class TdwSound
     public float midiPitch;
     public override string ToString()
     {
-        return $"{name} ({origin}) {symbol} {icon}";
+        return $"({name} ({origin}) {symbol} {icon})";
     }
 }

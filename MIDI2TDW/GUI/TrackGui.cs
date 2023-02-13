@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// A GUI for assigning Thirty Dollar Website sounds to all of the MIDI Programs in a MIDI Track.
+/// </summary>
+/// <remarks>
+/// Note Numbers take the place of Programs in percussion tracks.
+/// </remarks>
 public class TrackGui : MonoBehaviour, IStackedRect
 {
     [Header("UI")]
@@ -155,18 +161,26 @@ public class TrackGui : MonoBehaviour, IStackedRect
         trackNameLabel.color = value ? audibleColor : inaudibleColor;
     }
 
+    /// <summary>
+    /// Constructs a <see cref="MappedTrack"/> using the input provided to this GUI.
+    /// </summary>
+    /// <returns></returns>
     public MappedTrack GetMappedTrack()
     {
         Dictionary<SevenBitNumber, TdwProgramMap> programMappings = new();
+
         foreach (ProgramMapGui programMap in programMaps)
         {
             programMappings.Add(programMap.GetProgram(), programMap.GetProgramMap());
         }
-        return new()
+
+        MappedTrack mappedTrack = new()
         {
             midiTrack = midiTrack,
             programMappings = programMappings
         };
+
+        return mappedTrack;
     }
 
     private IStackedRect.LayoutChangedCallback onLayoutChanged;

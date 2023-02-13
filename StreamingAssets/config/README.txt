@@ -49,7 +49,17 @@ In this folder, you will find the following files:
     This file contains the following user-customizable settings:
     
     (root)
+     ├ debugMidiImport (number):
+     │   If you set this to any number greater than 0, debugging data for MIDI file imports will be placed in the
+     │   "debug" folder.
+     │
+     ├ dumpConversionIntermediates (number):
+     │   If you set this to any number greater than 0, debugging data for the conversion will be placed in the
+     │   "debug" folder.
+     │
      └ doVolumeActions (number) [EXPERIMENTAL]:
          If you set this to any number greater than 0, your exported Thirty Dollar Website songs will be
          generated with volume actions which attempt to replicate the volume information from the source MIDI file.
          This feature is experimental, hence why it is disabled by default.
+    
+    There are additional undocumented (but inconsequential) settings which can be configured using this file.
