@@ -1,9 +1,11 @@
+using Melanchall.DryWetMidi.Common;
 using System.Collections;
 using System.Collections.Generic;
 
 public static class TdwThirdPass
 {
-    public static bool doVolumeActions = false;
+    public static bool doVolumeParameters = false;
+    private static readonly float SEVEN_BIT_MAX_SQR = SevenBitNumber.MaxValue * SevenBitNumber.MaxValue;
 
     public static TdwEvent[] ThirdPass(TdwEvent[] input)
     {
@@ -19,11 +21,13 @@ public static class TdwThirdPass
                     for (int s = 0; s < sounds.Length; s++)
                     {
                         IntermediateSound sound = sounds[s];
-                        if (doVolumeActions)
+                        TdwSoundEvent soundEvent = new()
                         {
-                            tdwEvents.Add(new TdwVolumeAction() { volume = sound.volume });
-                        }
-                        tdwEvents.Add(new TdwSoundEvent() { symbol = sound.tdwSound.symbol, pitch = sound.pitchParameter } );
+                            symbol = sound.tdwSound.symbol,
+                            pitch = sound.pitchParameter,
+                            volume = doVolumeParameters ? (sound.volume / SEVEN_BIT_MAX_SQR) : 1f
+                        };
+                        tdwEvents.Add(soundEvent);
                         if (s == sounds.Length - 1)
                         {
                             continue;

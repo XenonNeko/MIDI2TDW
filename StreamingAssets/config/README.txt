@@ -57,9 +57,8 @@ In this folder, you will find the following files:
      │   If you set this to any number greater than 0, debugging data for the conversion will be placed in the
      │   "debug" folder.
      │
-     └ doVolumeActions (number) [EXPERIMENTAL]:
-         If you set this to any number greater than 0, your exported Thirty Dollar Website songs will be
-         generated with volume actions which attempt to replicate the volume information from the source MIDI file.
-         This feature is experimental, hence why it is disabled by default.
+     └ doVolumeParameters (number):
+         If you set this to any number greater than 0, each sound will have its volume set based on the volume
+         information from the source MIDI file.
     
     There are additional undocumented (but inconsequential) settings which can be configured using this file.

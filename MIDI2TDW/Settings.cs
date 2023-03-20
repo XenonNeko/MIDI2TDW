@@ -14,7 +14,7 @@ public class Settings : MonoBehaviour
         public int doIntro;
         public int debugMidiImport;
         public int dumpConversionIntermediates;
-        public int doVolumeActions;
+        public int doVolumeParameters;
 
         public int doPaletteRandomization;
         public int doHueShift;
@@ -129,7 +129,7 @@ public class Settings : MonoBehaviour
         TdwStringify.doIntro = Eval(AppSettings.doIntro);
         MidiFileImporter.debugMidiImport = Eval(AppSettings.debugMidiImport);
         TracksScreen.dumpConversionIntermediates = Eval(AppSettings.dumpConversionIntermediates);
-        TdwThirdPass.doVolumeActions = Eval(AppSettings.doVolumeActions);
+        TdwThirdPass.doVolumeParameters = Eval(AppSettings.doVolumeParameters);
 
         DoIf(RandomizePalette, AppSettings.doPaletteRandomization);
         DoIf(HueShift, AppSettings.doHueShift);

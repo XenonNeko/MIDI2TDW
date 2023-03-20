@@ -232,10 +232,8 @@ public class TracksScreen : MonoBehaviour
             var tdw2 = TdwSecondPass.SecondPass(tdw1);
             Debug.Log("Performing TDW Third Pass...");
             var tdw3 = TdwThirdPass.ThirdPass(tdw2);
-            Debug.Log("Performing TDW Fourth Pass...");
-            var tdw4 = TdwFourthPass.FourthPass(tdw3);
-            Debug.Log("Converting TDW Fourth Pass to text...");
-            string tdw = TdwStringify.Stringify(tdw4);
+            Debug.Log("Converting TDW Third Pass to text...");
+            string tdw = TdwStringify.Stringify(tdw3);
 
             path = Path.Combine(Application.streamingAssetsPath, "out", $"{filename}.🗿");
 
