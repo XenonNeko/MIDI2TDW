@@ -21,11 +21,27 @@ public class VersionCheck : MonoBehaviour
     private VersionBadge versionBadge;
 
     [Serializable]
-    public class VersionInfo
+    public class VersionInfo : IComparable<VersionInfo>
     {
         public string ver;
         public string date;
         public string dl;
+
+        public int CompareTo(VersionInfo other)
+        {
+            var date = DateTime.Parse(this.date);
+            var otherDate = DateTime.Parse(other.date);
+            return date.CompareTo(otherDate);
+        }
+
+        public static bool operator <(VersionInfo a, VersionInfo b)
+        {
+            return a.CompareTo(b) < 0;
+        }
+        public static bool operator >(VersionInfo a, VersionInfo b)
+        {
+            return a.CompareTo(b) > 0;
+        }
     }
 
     [SerializeField]
@@ -55,13 +71,21 @@ public class VersionCheck : MonoBehaviour
     private void ProcessResponse(string text)
     {
         VersionInfo latestVersion = JsonConvert.DeserializeObject<VersionInfo>(text);
-        if (latestVersion.ver != currentVersion.ver)
+        if (currentVersion < latestVersion)
         {
             versionBadge.SetOutOfDate();
             download = latestVersion.dl;
             return;
         }
-        versionBadge.SetUpToDate();
+        else if (currentVersion > latestVersion)
+        {
+            versionBadge.SetDev();
+            return;
+        }
+        else
+        {
+            versionBadge.SetUpToDate();
+        }
     }
 
     // Start is called before the first frame update

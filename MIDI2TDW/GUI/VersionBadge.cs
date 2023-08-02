@@ -23,6 +23,11 @@ public class VersionBadge : MonoBehaviour
     [SerializeField]
     private GameObject msgUpToDate;
 
+    [SerializeField]
+    private GameObject iconDev;
+    [SerializeField]
+    private GameObject msgDev;
+
     public void SetVersion(string name, string date)
     {
         versionLabel.text = $"{name}  -  <size=12><color=#BFBFBF>{date}";
@@ -44,6 +49,15 @@ public class VersionBadge : MonoBehaviour
 
         iconUpToDate.SetActive(true);
         msgUpToDate.SetActive(true);
+    }
+
+    public void SetDev()
+    {
+        iconChecking.SetActive(false);
+        msgChecking.SetActive(false);
+
+        iconDev.SetActive(true);
+        msgDev.SetActive(true);
     }
 
     public void SetError(string message)

@@ -9,23 +9,10 @@ using Random = UnityEngine.Random;
 
 public class Settings : MonoBehaviour
 {
-    public class SettingsJson
-    {
-        public int doIntro;
-        public int debugMidiImport;
-        public int dumpConversionIntermediates;
-        public int doVolumeParameters;
+    [SerializeField] private SettingsGUI settingsGUI;
+    [SerializeField] private ReadingSettingsGUI readingSettingsGUI;
 
-        public int doPaletteRandomization;
-        public int doHueShift;
-        public float hueShiftAmount;
-        public int doJitter;
-        public float jitterFactor;
-        public int doPhysics;
-        public int doSettingsEveryFrame;
-    }
-
-    public SettingsJson AppSettings { get; private set; }
+    public FullSettingsJson AppSettings { get; private set; }
 
     private void RandomizePalette()
     {
@@ -124,12 +111,13 @@ public class Settings : MonoBehaviour
         action.Invoke();
     }
 
-    private void ApplySettings()
+    public void ApplySettings()
     {
         TdwStringify.doIntro = Eval(AppSettings.doIntro);
         MidiFileImporter.debugMidiImport = Eval(AppSettings.debugMidiImport);
         TracksScreen.dumpConversionIntermediates = Eval(AppSettings.dumpConversionIntermediates);
         TdwThirdPass.doVolumeParameters = Eval(AppSettings.doVolumeParameters);
+        TdwTempoAction.TempoDecimalPlaces = AppSettings.tempoDecimalPlaces;
 
         DoIf(RandomizePalette, AppSettings.doPaletteRandomization);
         DoIf(HueShift, AppSettings.doHueShift);
@@ -137,9 +125,8 @@ public class Settings : MonoBehaviour
         DoIf(DoPhysics, AppSettings.doPhysics);
     }
 
-    public void LoadAppSettings()
+    public string EnsureConfigDirectory()
     {
-        Debug.Log("Loading settings...");
         string streamingAssetsPath = Application.streamingAssetsPath;
         if (!Directory.Exists(streamingAssetsPath))
         {
@@ -152,19 +139,28 @@ public class Settings : MonoBehaviour
             Debug.Log("'config' directory does not exist, creating it.");
             Directory.CreateDirectory(configPath);
         }
-        string defaultSoundsFile = Path.Combine(configPath, "settings.json");
-        if (!File.Exists(defaultSoundsFile))
+        return configPath;
+    }
+
+    public void LoadAppSettings()
+    {
+        Debug.Log("Loading settings...");
+        string configPath = EnsureConfigDirectory();
+        string settingsFile = Path.Combine(configPath, "settings.json");
+        if (!File.Exists(settingsFile))
         {
             Debug.Log("Settings file does not exist. Aborting.");
             return;
         }
 
-        string json = File.ReadAllText(defaultSoundsFile);
-        AppSettings = JsonConvert.DeserializeObject<SettingsJson>(json);
+        string json = File.ReadAllText(settingsFile);
+        AppSettings = JsonConvert.DeserializeObject<FullSettingsJson>(json);
 
         Debug.Log("Settings parsed successfully, now applying...");
 
         ApplySettings();
+
+        settingsGUI.LoadSettings();
 
         Debug.Log("Settings applied successfully.");
     }
@@ -174,27 +170,18 @@ public class Settings : MonoBehaviour
     public void LoadReadingSettings()
     {
         Debug.Log("Loading MIDI importer ReadingSettings...");
-        string streamingAssetsPath = Application.streamingAssetsPath;
-        if (!Directory.Exists(streamingAssetsPath))
-        {
-            Debug.Log("'StreamingAssets' directory does not exist, creating it.");
-            Directory.CreateDirectory(streamingAssetsPath);
-        }
-        string configPath = Path.Combine(streamingAssetsPath, "config");
-        if (!Directory.Exists(configPath))
-        {
-            Debug.Log("'config' directory does not exist, creating it.");
-            Directory.CreateDirectory(configPath);
-        }
-        string defaultSoundsFile = Path.Combine(configPath, "readingsettings.json");
-        if (!File.Exists(defaultSoundsFile))
+        string configPath = EnsureConfigDirectory();
+        string readingSettingsFile = Path.Combine(configPath, "readingsettings.json");
+        if (!File.Exists(readingSettingsFile))
         {
             Debug.Log("ReadingSettings file does not exist. Aborting.");
             return;
         }
 
-        string json = File.ReadAllText(defaultSoundsFile);
+        string json = File.ReadAllText(readingSettingsFile);
         ReadingSettings = JsonConvert.DeserializeObject<Melanchall.DryWetMidi.Core.ReadingSettings>(json);
+
+        readingSettingsGUI.LoadSettings();
 
         Debug.Log("ReadingSettings imported successfully.");
     }

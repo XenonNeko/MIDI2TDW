@@ -8,6 +8,8 @@ public class Logger : MonoBehaviour
 {
     [SerializeField]
     private VersionCheck versionCheck;
+    [SerializeField]
+    private ErrorMessage errorMessage;
 
     public static string TimeToFilename(DateTime time)
     {
@@ -62,6 +64,13 @@ public class Logger : MonoBehaviour
         {
             logStream.WriteLine(stackTrace);
         }
+
+        if (type is LogType.Error or LogType.Exception or LogType.Assert)
+        {
+            errorMessage.SetMessage($"{condition}\r\n{stackTrace}");
+            errorMessage.Open();
+        }
+
         logStream.WriteLine();
     }
 

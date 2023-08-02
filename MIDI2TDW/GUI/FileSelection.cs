@@ -187,7 +187,7 @@ public class FileSelection : MonoBehaviour
         List<string> list = new();
         foreach (string filePath in paths)
         {
-            string extension = Path.GetExtension(filePath);
+            string extension = Path.GetExtension(filePath).ToLower();
             if (extension is not ".mid" and not ".midi")
             {
                 continue;

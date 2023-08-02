@@ -13,7 +13,7 @@ In this folder, you will find the following files:
      │     │
      │     └ tdw (string):
      │         The sound to use for this MIDI program, represented by its text form (as seen in Thirty Dollar Website files).
-     │         Note that the text forms of several characters are emojis.
+     │         Note that the text forms of several sounds are emojis.
      │
      └ percussion (object):
         │  The 47 standardized MIDI percussion notes.
@@ -24,7 +24,7 @@ In this folder, you will find the following files:
            │
            ├ tdw (string):
            │   The sound to use for this MIDI program, represented by its text form (as seen in Thirty Dollar Website files).
-           │   Note that the text forms of several characters are emojis.
+           │   Note that the text forms of several sounds are emojis.
            │
            └ pitch (number) [optional]:
                If present, the pitch to be applied to the sound on the Thirty Dollar Website.

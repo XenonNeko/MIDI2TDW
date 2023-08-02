@@ -6,7 +6,7 @@ public static class TdwSecondPass
     public static TdwEvent[] SecondPass(TdwEvent[] input)
     {
         // Remove redundant tempo actions.
-        long interval = 0;
+        string tempo = "";
         List<TdwEvent> tdwEvents = new();
         for (int i = 0; i < input.Length; i++)
         {
@@ -14,11 +14,11 @@ public static class TdwSecondPass
             switch (tdwEvent)
             {
                 case TdwTempoAction tempoAction:
-                    if (tempoAction.intervalMicroseconds == interval)
+                    if (tempoAction.tempo == tempo)
                     {
                         break;
                     }
-                    interval = tempoAction.intervalMicroseconds;
+                    tempo = tempoAction.tempo;
                     tdwEvents.Add(tempoAction);
                     break;
                 default:

@@ -7,6 +7,5 @@ public class SoundJson
     public int id;
     public string name;
     public string origin;
-    public string icon;
     public float? midi;
 }

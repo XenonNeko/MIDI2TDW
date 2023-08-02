@@ -10,6 +10,9 @@ using UnityEngine;
 public class TracksScreen : MonoBehaviour
 {
     [SerializeField]
+    private DialogBox dialogBox;
+
+    [SerializeField]
     private TextMeshProUGUI filenameLabel;
 
     [SerializeField]
@@ -169,7 +172,9 @@ public class TracksScreen : MonoBehaviour
                     programMap.SetSound(Array.Find(tdwSounds, sound => sound.symbol == symbol));
                 }
             }
-        }    
+        }
+
+        dialogBox.Prompt("Applied default sound mappings.");
     }
 
     public static bool dumpConversionIntermediates = false;
@@ -254,6 +259,11 @@ public class TracksScreen : MonoBehaviour
 
         diagnostics.SnapshotFile(path, "exported-tdw.txt");
 
+        dialogBox.Prompt("File exported successfully.", () => OpenInExplorer(path));
+    }
+
+    private void OpenInExplorer(string path)
+    {
         path = path.Replace(@"/", @"\");
         System.Diagnostics.Process.Start("explorer.exe", "/select," + path);
     }

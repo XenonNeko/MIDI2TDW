@@ -7,6 +7,9 @@ public class Icons : MonoBehaviour
     [field: SerializeField]
     public Sprite[] IconSprites { get; private set; }
 
+    [field: SerializeField]
+    public Sprite NoIcon { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
