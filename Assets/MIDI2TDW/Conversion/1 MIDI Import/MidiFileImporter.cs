@@ -90,15 +90,16 @@ public static class MidiFileImporter
         List<MidiSound>[] sounds = new List<MidiSound>[16];
         List<SevenBitNumber>[] programs = new List<SevenBitNumber>[16];
 
+        SevenBitNumber[] programNumber = new SevenBitNumber[16];
+        SevenBitNumber[] ccChannelVolume = new SevenBitNumber[16];
+
         for (int ch = 0; ch < 16; ch++)
         {
             midiTracks[ch] = new() { isPercussion = ch == CH_PERCUSSION };
             sounds[ch] = new();
             programs[ch] = new();
+            ccChannelVolume[ch] = SevenBitNumber.MaxValue;
         }
-
-        SevenBitNumber[] programNumber = new SevenBitNumber[16];
-        SevenBitNumber[] ccChannelVolume = new SevenBitNumber[16];
 
         void AddNote(int channel, SevenBitNumber p_noteNumber)
         {
@@ -225,7 +226,7 @@ public static class MidiFileImporter
         List<SevenBitNumber> programs = new();
 
         SevenBitNumber? programNumber = null;
-        SevenBitNumber ccChannelVolume = (SevenBitNumber)0;
+        SevenBitNumber ccChannelVolume = SevenBitNumber.MaxValue;
 
         void SetChannel(FourBitNumber channel)
         {

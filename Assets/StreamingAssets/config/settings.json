@@ -1,6 +1,6 @@
 {
   "debugMidiImport": 0,
   "dumpConversionIntermediates": 0,
-  "doVolumeParameters": 0,
+  "doVolumeParameters": 1,
   "tempoDecimalPlaces": 0
 }

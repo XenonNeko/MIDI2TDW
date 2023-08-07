@@ -44,7 +44,7 @@ public static class IRFirstPass
                 interSound.tdwSound = mapping.sound;
                 interSound.pitchParameter = mapping.GetPitch(midiSound.noteNumber);
                 interSound.volume = midiSound.GetVolume();
-                
+
                 IntermediateChord interChord = new();
                 interChord.AddSound(interSound);
                 interChord.absoluteTime = midiSound.timeMicroseconds;

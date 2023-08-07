@@ -3321,7 +3321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &162470532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3362,7 +3362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TIP: MIDI files end in ".mid".'
+  m_text: 'TIP: Licking doorknobs is illegal on other planets'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47b62a9ed09e1e64ca31c14084b1d103, type: 2}
   m_sharedMaterial: {fileID: 9151583619469722958, guid: 47b62a9ed09e1e64ca31c14084b1d103, type: 2}
@@ -5872,7 +5872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The file could not be loaded.
+  m_text: That file could not be loaded.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 47b62a9ed09e1e64ca31c14084b1d103, type: 2}
   m_sharedMaterial: {fileID: 9151583619469722958, guid: 47b62a9ed09e1e64ca31c14084b1d103, type: 2}
@@ -15187,7 +15187,7 @@ MonoBehaviour:
   versionPrefix: 'Early Access '
   currentVersion:
     ver: 
-    date: 1 Aug 2023
+    date: 7 Aug 2023
     dl: 
   versionBadge: {fileID: 311909522}
   url: https://xenonneko.gamejolt.io/midi2tdw/latest.json

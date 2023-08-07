@@ -172,7 +172,7 @@
   "🎹": {
     "name": "Piano Riff",
     "origin": "iPhone",
-    "midi": null
+    "midi": 31
   },
   "❗": {
     "name": "Alert",
@@ -235,7 +235,7 @@
   "metalpipe": {
     "name": "Metal Pipe",
     "origin": null,
-    "midi": null
+    "midi": 61
   },
   "boing": {
     "name": "Boing",
@@ -316,7 +316,7 @@
   "oof": {
     "name": "Oof",
     "origin": "Roblox",
-    "midi": null
+    "midi": 60
   },
   "steve_oof": {
     "name": "Oof",
@@ -326,7 +326,7 @@
   "gnome": {
     "name": "Gnome",
     "origin": "You've Been Gnomed",
-    "midi": null
+    "midi": 62
   },
   "nope": {
     "name": "nope.avi",

@@ -69,6 +69,7 @@ public class FileSelection : MonoBehaviour
     private void ImportFile(string path)
     {
         importedFilename = Path.GetFileNameWithoutExtension(path);
+
         isAwaitingImportTask = true;
 
         Debug.Log("Importing file...");
@@ -122,6 +123,14 @@ public class FileSelection : MonoBehaviour
         {
             Debug.Log("File does not exist.");
             errorMsg.SetMessage("File does not exist.");
+            errorMsg.Open();
+            return;
+        }
+
+        if (!FileTypeAnalyzer.IsMidiFile(path, out string message))
+        {
+            Debug.Log("File was not loaded.");
+            errorMsg.SetMessage(message);
             errorMsg.Open();
             return;
         }
