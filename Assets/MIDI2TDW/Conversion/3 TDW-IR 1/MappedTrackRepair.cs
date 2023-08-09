@@ -60,7 +60,8 @@ public static class MappedTrackRepair
             // A sound in the MIDI Track uses a program which is not specified in the program mappings.
             if (programNumber != 0)
             {
-                throw new Exception("MIDI data could not confidently be repaired.");
+                Debug.LogWarning("MIDI data could not confidently be repaired.");
+                //throw new Exception("MIDI data could not confidently be repaired.");
             }
             SevenBitNumber newNumber = hasValidProgramNumber ? mostRecentValidProgramNumber : firstValidProgramNumber;
             ReplaceProgramNumber(midiSound, newNumber, isPercussion);
