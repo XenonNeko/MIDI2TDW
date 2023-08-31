@@ -28,6 +28,10 @@ public class MidiSound
     /// Absolute Time of the Note in microseconds
     /// </summary>
     public long timeMicroseconds;
+    /// <summary>
+    /// Duration of the Note in microseconds
+    /// </summary>
+    public long durationMicroseconds;
 
     public int GetVolume()
     {

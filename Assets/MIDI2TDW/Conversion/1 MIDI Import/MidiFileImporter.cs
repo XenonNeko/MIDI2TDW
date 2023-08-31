@@ -282,6 +282,8 @@ public static class MidiFileImporter
                     SevenBitNumber noteNumber = note.NoteNumber;
                     AddNote(noteNumber);
                     MetricTimeSpan timeMetric = note.TimeAs<MetricTimeSpan>(tempoMap);
+                    MetricTimeSpan endTimeMetric = note.EndTimeAs<MetricTimeSpan>(tempoMap);
+                    long durationMicroseconds = endTimeMetric.TotalMicroseconds - timeMetric.TotalMicroseconds;
 
                     if (programNumber is null)
                     {
@@ -295,7 +297,8 @@ public static class MidiFileImporter
                         noteNumber = noteNumber,
                         velocity = note.Velocity,
                         channelVolume = ccChannelVolume,
-                        timeMicroseconds = timeMetric.TotalMicroseconds
+                        timeMicroseconds = timeMetric.TotalMicroseconds,
+                        durationMicroseconds = durationMicroseconds
                     };
                     sounds.Add(sound);
                     break;

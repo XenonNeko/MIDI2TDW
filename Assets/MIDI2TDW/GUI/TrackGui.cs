@@ -138,6 +138,11 @@ public class TrackGui : MonoBehaviour, IStackedRect
         contentHeight = templateHeight * programMaps.Length;
     }
 
+    public void SendToBuzzToneConvert()
+    {
+        BuzzToneConvert.ConvertTrack(midiTrack);
+    }
+
     [SerializeField]
     private TracksScreen tracksScreen;
 
