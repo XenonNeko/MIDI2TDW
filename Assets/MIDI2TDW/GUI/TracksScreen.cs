@@ -240,6 +240,13 @@ public class TracksScreen : MonoBehaviour
             Debug.Log("Converting TDW Third Pass to text...");
             string tdw = TdwStringify.Stringify(tdw3);
 
+            path = Path.Combine(Application.streamingAssetsPath, "out");
+            if (!Directory.Exists(path))
+            {
+                Debug.Log("'out' directory did not exist, creating it...");
+                Directory.CreateDirectory(path);
+            }
+
             path = Path.Combine(Application.streamingAssetsPath, "out", $"{filename}.moai");
 
             Debug.Log($"Writing text to file '{Path.GetFileName(path)}'...");
