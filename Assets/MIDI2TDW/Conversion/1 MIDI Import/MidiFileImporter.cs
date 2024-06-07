@@ -534,7 +534,7 @@ public static class MidiFileImporter
                 DebugLog("File is format 2", debugLog);
                 break;
             default:
-                DebugLog($"[]ERROR Unrecognized MIDI format '{midiFile.OriginalFormat}'", debugLog);
+                DebugLog($"[ERROR] Unrecognized MIDI format '{midiFile.OriginalFormat}'", debugLog);
                 WriteDebugLog(debugLog, filename);
                 return null;
         }

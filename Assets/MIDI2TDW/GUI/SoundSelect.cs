@@ -13,14 +13,17 @@ public class SoundSelect : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI header;
     [SerializeField]
+    private float guiScale;
+    [SerializeField]
     private float size;
     [SerializeField]
     private int columns;
-    [SerializeField]
-    private int rows;
 
     public void DrawButtons()
     {
+        size *= guiScale;
+        buttonTemplate.iconSize *= guiScale;
+
         TdwSound[] tdwSounds = sounds.GetTDWSounds();
         int column = 0;
         int row = 0;

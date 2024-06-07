@@ -13,8 +13,7 @@ public class SoundButton : MonoBehaviour
     private RectTransform rectTransform;
     [SerializeField]
     private Graphic highlight;
-    [SerializeField]
-    private float iconSize;
+    public float iconSize;
     [SerializeField]
     private Image iconImage;
     [SerializeField]

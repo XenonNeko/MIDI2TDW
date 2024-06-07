@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,11 +36,7 @@ public class Sounds : MonoBehaviour
                 hasPitch = soundJson.midi.HasValue,
                 midiPitch = soundJson.midi.GetValueOrDefault()
             };
-            // emoji
-            if (key.Length == 2 && char.IsSurrogatePair(key[0], key[1]))
-            {
-                key = char.ConvertToUtf32(key[0], key[1]).ToString("x5");
-            }
+            EmojiUtil.TryGetEmoji(key, out key);
             tdwSound.icon = Array.Find(allIcons, i => i.name == key);
             if (!tdwSound.icon)
             {

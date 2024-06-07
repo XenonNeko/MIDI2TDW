@@ -1038,5 +1038,30 @@
     "name": "Note Block - Pling",
     "origin": "Minecraft",
     "midi": 66
+  },
+  "fireinthehole": {
+    "name": "FIRE IN THE HOLE",
+    "origin": "Geometry Dash",
+    "midi": null
+  },
+  "wateronthehill": {
+    "name": "WATER ON THE HILL",
+    "origin": "Geometry Dash",
+    "midi": null
+  },
+  "gdexplosion": {
+    "name": "Explosion",
+    "origin": "Geometry Dash",
+    "midi": null
+  },
+  "geometrydash": {
+    "name": "GEOMETRY DASH",
+    "origin": "Geometry Dash",
+    "midi": null
+  },
+  "stylophone": {
+    "name": "Stylophone",
+    "origin": "lewisjohnmusic",
+    "midi": 66
   }
 }
