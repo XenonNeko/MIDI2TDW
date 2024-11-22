@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
@@ -38,10 +37,10 @@ public class Diagnostics : MonoBehaviour
         {
             return new()
             {
-                relativePath = Path.GetRelativePath(Application.streamingAssetsPath, "(in memory)"),
+                relativePath = "(in memory)",
                 description = description,
                 dateCreated = DateTime.Now,
-                contents = System.Text.Encoding.ASCII.GetBytes(text)
+                contents = Encoding.ASCII.GetBytes(text)
             };
         }
 

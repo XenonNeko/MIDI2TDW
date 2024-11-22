@@ -15,6 +15,8 @@ public class ProgramMapGui : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField]
+    private GameObject warnIcon;
+    [SerializeField]
     private RectTransform rectTransform;
     [SerializeField]
     private float iconSize;
@@ -118,5 +120,10 @@ public class ProgramMapGui : MonoBehaviour
     public void SetPitch(float pitch)
     {
         pitchOffset = pitch;
+    }
+
+    private void Update()
+    {
+        warnIcon.SetActive(sound.name == "Silence");
     }
 }

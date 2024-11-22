@@ -19,6 +19,9 @@ public class TrackGui : MonoBehaviour, IStackedRect
     private float templateHeight;
 
     [SerializeField]
+    private GameObject warnIcon;
+
+    [SerializeField]
     private TextMeshProUGUI trackNameLabel;
     [SerializeField]
     private RectTransform rectTransform;
@@ -198,5 +201,21 @@ public class TrackGui : MonoBehaviour, IStackedRect
     RectTransform IStackedRect.GetRect()
     {
         return rectTransform;
+    }
+
+    private void Update()
+    {
+        warnIcon.SetActive(HasUnsetMappings());
+    }
+
+    public bool HasUnsetMappings()
+    {
+        for (int i = 0; i < programMaps.Length; i++)
+        {
+            ProgramMapGui programMap = programMaps[i];
+            TdwProgramMap soundMap = programMap.GetProgramMap();
+            if (soundMap.sound.name == "Silence") return true;
+        }
+        return false;
     }
 }

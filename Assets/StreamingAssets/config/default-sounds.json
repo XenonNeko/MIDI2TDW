@@ -175,7 +175,7 @@
         "77":{"name":"Low Wood Block","tdw":""},
         "78":{"name":"Mute Cuica","tdw":""},
         "79":{"name":"Open Cuica","tdw":""},
-        "80":{"name":"Mute Triangle","tdw":""},
-        "81":{"name":"Open Triangle","tdw":""}
+        "80":{"name":"Mute Triangle","tdw":"mariopaint_star"},
+        "81":{"name":"Open Triangle","tdw":"mariopaint_star","pitch":12}
     }
 }

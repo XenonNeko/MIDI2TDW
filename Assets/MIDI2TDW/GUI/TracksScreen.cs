@@ -10,6 +10,9 @@ using UnityEngine;
 public class TracksScreen : MonoBehaviour
 {
     [SerializeField]
+    private GameObject warnDialog;
+
+    [SerializeField]
     private DialogBox dialogBox;
 
     [SerializeField]
@@ -180,6 +183,25 @@ public class TracksScreen : MonoBehaviour
     public static bool dumpConversionIntermediates = false;
 
     public void Next()
+    {
+        foreach (TrackGui track in trackGuis)
+        {
+            if (track.HasUnsetMappings())
+            {
+                Debug.LogWarning("One or more MIDI Instruments are missing a TDW Sound mapping.");
+                warnDialog.SetActive(true);
+                return;
+            }
+        }
+        Export();
+    }
+
+    public void ExportAnyway()
+    {
+        Export();
+    }
+
+    public void Export()
     {
         Debug.Log("Exporting Thirty Dollar Website file...");
 

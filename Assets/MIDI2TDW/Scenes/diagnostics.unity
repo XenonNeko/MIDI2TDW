@@ -155,7 +155,7 @@ MonoBehaviour:
   discordUrl: https://discord.gg/n6vd9E8j4U
   logger: {fileID: 0}
   decrypt: 1
-  package: 2023-11-9_22-21-40
+  package: 2024-11-21_20-32-31
 --- !u!4 &968969271
 Transform:
   m_ObjectHideFlags: 0
@@ -163,11 +163,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968969269}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 968969271}
