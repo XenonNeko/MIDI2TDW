@@ -1063,5 +1063,89 @@
     "name": "Stylophone",
     "origin": "lewisjohnmusic",
     "midi": 66
+  },
+  
+  "💡": {
+    "name": "Phonk Cowbell",
+    "origin": "TR-808",
+    "midi": null
+  },
+  
+  "🎅🏻": {
+    "name": "Oh ho ho",
+    "origin": "IdkSterling",
+    "midi": null
+  },
+  
+  "huhcat": {
+    "name": "Huh",
+    "origin": "Unknown",
+    "midi": null
+  },
+  
+  "huhdouyin": {
+    "name": "Huh",
+    "origin": "Douyin",
+    "midi": null
+  },
+  
+  "doorbellcat": {
+    "name": "Doorbell Cat",
+    "origin": "Unknown",
+    "midi": null
+  },
+  
+  "meowsynth": {
+    "name": "Meow Synth",
+    "origin": null,
+    "midi": 60
+  },
+  
+  "jermawoo": {
+    "name": "WOO",
+    "origin": "Jerma985",
+    "midi": 85
+  },
+  
+  "dkremote": {
+    "name": "Donkey Kong Selection",
+    "origin": "Super Smash Bros. Brawl",
+    "midi": null
+  },
+  
+  "smokealarm": {
+    "name": "Smoke Alarm Chirp",
+    "origin": null,
+    "midi": 104
+  },
+  
+  "getout": {
+    "name": "GET OUT",
+    "origin": "Utopia Roleplay",
+    "midi": null
+  },
+  
+  "gura": {
+    "name": "a",
+    "origin": "Gawr Gura",
+    "midi": 64
+  },
+  
+  "cop": {
+    "name": "Cop",
+    "origin": "Subway Surfers",
+    "midi": 69
+  },
+  
+  "chess": {
+    "name": "Capture",
+    "origin": "Chess.com",
+    "midi": null
+  },
+  
+  "woo": {
+    "name": "Woo!",
+    "origin": "VVE1",
+    "midi": 84
   }
 }

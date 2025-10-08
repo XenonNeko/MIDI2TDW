@@ -18,7 +18,7 @@ public class Settings : MonoBehaviour
     {
         Camera camera = Camera.main;
         camera.backgroundColor = Random.ColorHSV();
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>();
         Graphic[] graphics = canvas.GetComponentsInChildren<Graphic>(true);
         HashSet<Color> palette = new();
         Dictionary<Color, Color> colorRemap = new();
@@ -45,7 +45,7 @@ public class Settings : MonoBehaviour
 
     private void HueShift()
     {
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>();
         Graphic[] graphics = canvas.GetComponentsInChildren<Graphic>(true);
         foreach (Graphic graphic in graphics)
         {
@@ -58,7 +58,7 @@ public class Settings : MonoBehaviour
 
     private void JitterUiElements()
     {
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>();
         Transform[] transforms = canvas.GetComponentsInChildren<Transform>(true);
         foreach (Transform transform in transforms)
         {
@@ -75,7 +75,7 @@ public class Settings : MonoBehaviour
 
     private void DoPhysics()
     {
-        Canvas canvas = FindObjectOfType<Canvas>();
+        Canvas canvas = FindFirstObjectByType<Canvas>();
         Graphic[] graphics = canvas.GetComponentsInChildren<Graphic>(true);
         foreach (Graphic graphic in graphics)
         {

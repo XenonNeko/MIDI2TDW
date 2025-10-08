@@ -28,6 +28,11 @@ public static class EmojiUtil
             encoding = char.ConvertToUtf32(str[0], str[1]).ToString("x5");
             return true;
         }
+        else if (str.Length == 4 && char.IsSurrogatePair(str[0], str[1]) && char.IsSurrogatePair(str[2], str[3]))
+        {
+            encoding = char.ConvertToUtf32(str[0], str[1]).ToString("x5");
+            return true;
+        }
         else
         {
             encoding = str;
